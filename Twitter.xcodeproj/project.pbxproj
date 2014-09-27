@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF5843D819D6B1650030BD8A /* ClientGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5843D719D6B1650030BD8A /* ClientGenerator.swift */; };
+		DF5843DB19D6C7C10030BD8A /* protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5843DA19D6C7C10030BD8A /* protocols.swift */; };
 		DFC3AB7C19D68DDF003D75C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC3AB7B19D68DDF003D75C1 /* AppDelegate.swift */; };
 		DFC3AB7F19D68DDF003D75C1 /* Twitter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DFC3AB7D19D68DDF003D75C1 /* Twitter.xcdatamodeld */; };
 		DFC3AB8119D68DDF003D75C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC3AB8019D68DDF003D75C1 /* ViewController.swift */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DF5843D719D6B1650030BD8A /* ClientGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientGenerator.swift; sourceTree = "<group>"; };
+		DF5843DA19D6C7C10030BD8A /* protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = protocols.swift; sourceTree = "<group>"; };
 		DFC3AB7619D68DDF003D75C1 /* Twitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFC3AB7A19D68DDF003D75C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFC3AB7B19D68DDF003D75C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +84,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF5843D619D6B14F0030BD8A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DF5843D719D6B1650030BD8A /* ClientGenerator.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		DF5843D919D6C7B50030BD8A /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				DF5843DA19D6C7C10030BD8A /* protocols.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
 		DFC3AB6D19D68DDF003D75C1 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +121,8 @@
 		DFC3AB7819D68DDF003D75C1 /* Twitter */ = {
 			isa = PBXGroup;
 			children = (
+				DF5843D919D6C7B50030BD8A /* Protocols */,
+				DF5843D619D6B14F0030BD8A /* Model */,
 				DFC3ABBE19D69358003D75C1 /* OAuth */,
 				DFC3AB7B19D68DDF003D75C1 /* AppDelegate.swift */,
 				DFC3AB8019D68DDF003D75C1 /* ViewController.swift */,
@@ -267,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFC3AB8119D68DDF003D75C1 /* ViewController.swift in Sources */,
+				DF5843DB19D6C7C10030BD8A /* protocols.swift in Sources */,
 				DFC3ABCB19D69358003D75C1 /* Dictionary+OAuthSwift.swift in Sources */,
 				DFC3ABCE19D69358003D75C1 /* HMACSHA1Signature.m in Sources */,
 				DFC3ABCF19D69358003D75C1 /* OAuth1Swift.swift in Sources */,
@@ -276,6 +299,7 @@
 				DFC3AB7C19D68DDF003D75C1 /* AppDelegate.swift in Sources */,
 				DFC3AB7F19D68DDF003D75C1 /* Twitter.xcdatamodeld in Sources */,
 				DFC3ABD319D69358003D75C1 /* OAuthSwiftHTTPRequest.swift in Sources */,
+				DF5843D819D6B1650030BD8A /* ClientGenerator.swift in Sources */,
 				DFC3ABCC19D69358003D75C1 /* NSURL+OAuthSwift.swift in Sources */,
 				DFC3ABD019D69358003D75C1 /* OAuth2Swift.swift in Sources */,
 			);

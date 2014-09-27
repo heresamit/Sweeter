@@ -31,6 +31,10 @@ class OAuthSwiftClient {
         
     }
     
+    init(credential: OAuthSwiftCredential) {
+        self.credential = credential
+    }
+    
     func get(urlString: String, parameters: Dictionary<String, AnyObject>, success: OAuthSwiftHTTPRequest.SuccessHandler?, failure: OAuthSwiftHTTPRequest.FailureHandler?) {
         
         let url = NSURL(string: urlString)
