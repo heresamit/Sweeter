@@ -14,6 +14,15 @@
 		DFC3AB8619D68DDF003D75C1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFC3AB8519D68DDF003D75C1 /* Images.xcassets */; };
 		DFC3AB8919D68DDF003D75C1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFC3AB8719D68DDF003D75C1 /* LaunchScreen.xib */; };
 		DFC3AB9519D68DDF003D75C1 /* TwitterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC3AB9419D68DDF003D75C1 /* TwitterTests.swift */; };
+		DFC3ABCB19D69358003D75C1 /* Dictionary+OAuthSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC3ABC019D69358003D75C1 /* Dictionary+OAuthSwift.swift */; };
+		DFC3ABCC19D69358003D75C1 /* NSURL+OAuthSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC3ABC119D69358003D75C1 /* NSURL+OAuthSwift.swift */; };
+		DFC3ABCD19D69358003D75C1 /* String+OAuthSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC3ABC219D69358003D75C1 /* String+OAuthSwift.swift */; };
+		DFC3ABCE19D69358003D75C1 /* HMACSHA1Signature.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC3ABC419D69358003D75C1 /* HMACSHA1Signature.m */; };
+		DFC3ABCF19D69358003D75C1 /* OAuth1Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC3ABC519D69358003D75C1 /* OAuth1Swift.swift */; };
+		DFC3ABD019D69358003D75C1 /* OAuth2Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC3ABC619D69358003D75C1 /* OAuth2Swift.swift */; };
+		DFC3ABD119D69358003D75C1 /* OAuthSwiftClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC3ABC819D69358003D75C1 /* OAuthSwiftClient.swift */; };
+		DFC3ABD219D69358003D75C1 /* OAuthSwiftCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC3ABC919D69358003D75C1 /* OAuthSwiftCredential.swift */; };
+		DFC3ABD319D69358003D75C1 /* OAuthSwiftHTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC3ABCA19D69358003D75C1 /* OAuthSwiftHTTPRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +47,17 @@
 		DFC3AB8E19D68DDF003D75C1 /* TwitterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwitterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFC3AB9319D68DDF003D75C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFC3AB9419D68DDF003D75C1 /* TwitterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterTests.swift; sourceTree = "<group>"; };
+		DFC3ABC019D69358003D75C1 /* Dictionary+OAuthSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+OAuthSwift.swift"; sourceTree = "<group>"; };
+		DFC3ABC119D69358003D75C1 /* NSURL+OAuthSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+OAuthSwift.swift"; sourceTree = "<group>"; };
+		DFC3ABC219D69358003D75C1 /* String+OAuthSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+OAuthSwift.swift"; sourceTree = "<group>"; };
+		DFC3ABC319D69358003D75C1 /* HMACSHA1Signature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMACSHA1Signature.h; sourceTree = "<group>"; };
+		DFC3ABC419D69358003D75C1 /* HMACSHA1Signature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMACSHA1Signature.m; sourceTree = "<group>"; };
+		DFC3ABC519D69358003D75C1 /* OAuth1Swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth1Swift.swift; sourceTree = "<group>"; };
+		DFC3ABC619D69358003D75C1 /* OAuth2Swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2Swift.swift; sourceTree = "<group>"; };
+		DFC3ABC719D69358003D75C1 /* OAuthSwift-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OAuthSwift-Bridging-Header.h"; sourceTree = "<group>"; };
+		DFC3ABC819D69358003D75C1 /* OAuthSwiftClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthSwiftClient.swift; sourceTree = "<group>"; };
+		DFC3ABC919D69358003D75C1 /* OAuthSwiftCredential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthSwiftCredential.swift; sourceTree = "<group>"; };
+		DFC3ABCA19D69358003D75C1 /* OAuthSwiftHTTPRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthSwiftHTTPRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +99,7 @@
 		DFC3AB7819D68DDF003D75C1 /* Twitter */ = {
 			isa = PBXGroup;
 			children = (
+				DFC3ABBE19D69358003D75C1 /* OAuth */,
 				DFC3AB7B19D68DDF003D75C1 /* AppDelegate.swift */,
 				DFC3AB8019D68DDF003D75C1 /* ViewController.swift */,
 				DFC3AB8219D68DDF003D75C1 /* Main.storyboard */,
@@ -113,6 +134,32 @@
 				DFC3AB9319D68DDF003D75C1 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DFC3ABBE19D69358003D75C1 /* OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				DFC3ABBF19D69358003D75C1 /* extension */,
+				DFC3ABC319D69358003D75C1 /* HMACSHA1Signature.h */,
+				DFC3ABC419D69358003D75C1 /* HMACSHA1Signature.m */,
+				DFC3ABC519D69358003D75C1 /* OAuth1Swift.swift */,
+				DFC3ABC619D69358003D75C1 /* OAuth2Swift.swift */,
+				DFC3ABC719D69358003D75C1 /* OAuthSwift-Bridging-Header.h */,
+				DFC3ABC819D69358003D75C1 /* OAuthSwiftClient.swift */,
+				DFC3ABC919D69358003D75C1 /* OAuthSwiftCredential.swift */,
+				DFC3ABCA19D69358003D75C1 /* OAuthSwiftHTTPRequest.swift */,
+			);
+			path = OAuth;
+			sourceTree = "<group>";
+		};
+		DFC3ABBF19D69358003D75C1 /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				DFC3ABC019D69358003D75C1 /* Dictionary+OAuthSwift.swift */,
+				DFC3ABC119D69358003D75C1 /* NSURL+OAuthSwift.swift */,
+				DFC3ABC219D69358003D75C1 /* String+OAuthSwift.swift */,
+			);
+			path = extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,8 +263,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFC3AB8119D68DDF003D75C1 /* ViewController.swift in Sources */,
+				DFC3ABCB19D69358003D75C1 /* Dictionary+OAuthSwift.swift in Sources */,
+				DFC3ABCE19D69358003D75C1 /* HMACSHA1Signature.m in Sources */,
+				DFC3ABCF19D69358003D75C1 /* OAuth1Swift.swift in Sources */,
+				DFC3ABD119D69358003D75C1 /* OAuthSwiftClient.swift in Sources */,
+				DFC3ABD219D69358003D75C1 /* OAuthSwiftCredential.swift in Sources */,
+				DFC3ABCD19D69358003D75C1 /* String+OAuthSwift.swift in Sources */,
 				DFC3AB7C19D68DDF003D75C1 /* AppDelegate.swift in Sources */,
 				DFC3AB7F19D68DDF003D75C1 /* Twitter.xcdatamodeld in Sources */,
+				DFC3ABD319D69358003D75C1 /* OAuthSwiftHTTPRequest.swift in Sources */,
+				DFC3ABCC19D69358003D75C1 /* NSURL+OAuthSwift.swift in Sources */,
+				DFC3ABD019D69358003D75C1 /* OAuth2Swift.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +401,7 @@
 				INFOPLIST_FILE = Twitter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Twitter/OAuth/OAuthSwift-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -355,6 +412,7 @@
 				INFOPLIST_FILE = Twitter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Twitter/OAuth/OAuthSwift-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -411,6 +469,7 @@
 				DFC3AB9A19D68DDF003D75C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DFC3AB9B19D68DDF003D75C1 /* Build configuration list for PBXNativeTarget "TwitterTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +478,7 @@
 				DFC3AB9D19D68DDF003D75C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
