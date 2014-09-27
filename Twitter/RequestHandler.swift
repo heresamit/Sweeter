@@ -12,7 +12,7 @@ private let _SingletonASharedInstance = RequestHandler()
 
 class RequestHandler: ClientGeneratorDelegate  {
     
-    var client: OAuthSwiftClient = OAuthSwiftClient()
+    var client: OAuthSwiftClient?
     var isReady: Bool = false
     
     class var sharedInstance : RequestHandler {

@@ -25,7 +25,7 @@ class ClientGenerator {
         for key in keyArray {
             if let val = NSUserDefaults.standardUserDefaults().objectForKey(key) as? NSString {
                 
-                switch (i) {
+                switch (i++) {
                 case 0:
                     credentials.consumer_key = val
                 case 1:
@@ -54,7 +54,7 @@ class ClientGenerator {
     func generateClient() {
         
         loadCredentialsFromUserDefaults()
-        
+
         if !credentials.isUsable() {
             regenerateCredentials()
         } else {

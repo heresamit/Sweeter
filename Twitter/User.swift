@@ -12,10 +12,6 @@ class User {
     var screenName: String = String()
     var id: String = String()
     
-    init() {
-        
-    }
-    
     init(id: String, screenName: String) {
         self.screenName = screenName
         self.id = id
