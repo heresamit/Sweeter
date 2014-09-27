@@ -33,7 +33,7 @@ class OAuthSwiftCredential {
         return !consumer_key.isEmpty && !oauth_token.isEmpty
     }
     
-    func saveToUserDefaults () -> () {
+    func saveToUserDefaults() {
         NSUserDefaults.standardUserDefaults().setObject(consumer_key, forKey: "consumerKey")
         NSUserDefaults.standardUserDefaults().setObject(consumer_secret, forKey: "consumerSecret")
         NSUserDefaults.standardUserDefaults().setObject(oauth_verifier, forKey: "oauthVerifier")
