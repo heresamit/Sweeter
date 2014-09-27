@@ -12,6 +12,15 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let path = NSBundle.mainBundle().pathForResource("credentials", ofType: "plist") {
+            let credentials = NSDictionary(contentsOfFile: path)
+            println(credentials)
+        } else {
+            println("credentials.plist not found")
+        }
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 

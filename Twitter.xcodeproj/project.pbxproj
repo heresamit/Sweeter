@@ -23,6 +23,7 @@
 		DFC3ABD119D69358003D75C1 /* OAuthSwiftClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC3ABC819D69358003D75C1 /* OAuthSwiftClient.swift */; };
 		DFC3ABD219D69358003D75C1 /* OAuthSwiftCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC3ABC919D69358003D75C1 /* OAuthSwiftCredential.swift */; };
 		DFC3ABD319D69358003D75C1 /* OAuthSwiftHTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC3ABCA19D69358003D75C1 /* OAuthSwiftHTTPRequest.swift */; };
+		DFD2917A19D6A3C60034B906 /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = DFD2917919D6A3C60034B906 /* credentials.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		DFC3ABC819D69358003D75C1 /* OAuthSwiftClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthSwiftClient.swift; sourceTree = "<group>"; };
 		DFC3ABC919D69358003D75C1 /* OAuthSwiftCredential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthSwiftCredential.swift; sourceTree = "<group>"; };
 		DFC3ABCA19D69358003D75C1 /* OAuthSwiftHTTPRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthSwiftHTTPRequest.swift; sourceTree = "<group>"; };
+		DFD2917919D6A3C60034B906 /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				DFC3AB7A19D68DDF003D75C1 /* Info.plist */,
+				DFD2917919D6A3C60034B906 /* credentials.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFC3AB8419D68DDF003D75C1 /* Main.storyboard in Resources */,
+				DFD2917A19D6A3C60034B906 /* credentials.plist in Resources */,
 				DFC3AB8919D68DDF003D75C1 /* LaunchScreen.xib in Resources */,
 				DFC3AB8619D68DDF003D75C1 /* Images.xcassets in Resources */,
 			);
