@@ -13,10 +13,25 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        var vc: UIViewController
+        
         // Override point for customization after application launch.
+        if isFirstRun() {
+            vc = storyboard.instantiateViewControllerWithIdentifier("AuthenticateVC") as ViewController
+        } else {
+            let upvc = storyboard.instantiateViewControllerWithIdentifier("UserProfileVC") as UserProfileViewController
+            upvc.user = getMainUser()
+            vc = upvc
+        }
+        
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        self.window?.rootViewController = vc
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
 

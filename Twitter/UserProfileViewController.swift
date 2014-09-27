@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  UserProfileViewController.swift
 //  Twitter
 //
 //  Created by Amit Chowdhary on 9/27/14.
@@ -8,11 +8,16 @@
 
 import UIKit
 
-class ViewController: UIViewController, RequestHandlerUser {
+class UserProfileViewController: UIViewController, RequestHandlerUser {
     
+    @IBOutlet weak var idLabel: UILabel!
+    @IBOutlet weak var screenNameLabel: UILabel!
+    
+    var user: User?
     var observer: AnyObject?
-
-    @IBAction func authenticatePressed(sender: UIButton) {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         if RequestHandler.sharedInstance.isReady {
             requestHandlerIsReady()
         } else {
@@ -24,23 +29,21 @@ class ViewController: UIViewController, RequestHandlerUser {
                 self.requestHandlerIsReady()
             }
         }
+        // Do any additional setup after loading the view, typically from a nib.
     }
     
     func requestHandlerIsReady() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        var  vc = storyboard.instantiateViewControllerWithIdentifier("UserProfileVC") as UserProfileViewController
-        vc.user = getMainUser()
-        self.presentViewController(vc, animated: true, completion: nil)
+        
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        idLabel.text = user?.id
+        screenNameLabel.text = user?.screenName
     }
     
     override func viewWillDisappear(animated: Bool) {

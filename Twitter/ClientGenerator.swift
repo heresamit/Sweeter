@@ -8,17 +8,12 @@
 
 import Foundation
 
-let requestTokenURLString = "https://api.twitter.com/oauth/request_token"
-let authorizURLString = "https://api.twitter.com/oauth/authorize"
-let accessTokenURLString = "https://api.twitter.com/oauth/access_token"
-let callbackURLString = "sweeter://oauth-callback/twitter"
-
 class ClientGenerator {
     
     var credentials: OAuthSwiftCredential = OAuthSwiftCredential()
-    var delegate: clientGeneratorDelegate
+    var delegate: ClientGeneratorDelegate
     
-    init(delegate: clientGeneratorDelegate) {
+    init(delegate: ClientGeneratorDelegate) {
         self.delegate = delegate
     }
     
@@ -49,35 +44,11 @@ class ClientGenerator {
     }
     
     private func regenerateCredentials() {
-        
-        if let path = NSBundle.mainBundle().pathForResource("credentials", ofType: "plist") {
-            
-            let credentials = NSDictionary(contentsOfFile: path)
-            
-            var oauthswift = OAuth1Swift(
-                consumerKey: credentials["consumerKey"] as String,
-                consumerSecret: credentials["consumerSecret"] as String,
-                requestTokenUrl: requestTokenURLString,
-                authorizeUrl: authorizURLString,
-                accessTokenUrl: accessTokenURLString
-            )
-            
-            oauthswift.authorizeWithCallbackURL( NSURL(string: callbackURLString), success: {
-                credential, response in
-                    self.credentials = credential
-                    self.credentials.saveToUserDefaults()
-                    self.informDelegate()
-                }, failure: {(error:NSError!) -> Void in
-                    println(error.localizedDescription)
-            })
-            
-        } else {
-            println("credentials.plist not found")
+        Authenticator.performOAuth() {
+            credential in
+            self.credentials = credential
+            self.delegate.clientCreated(OAuthSwiftClient(credential: credential))
         }
-    }
-    
-    func informDelegate() {
-        delegate.clientCreated(OAuthSwiftClient(credential: credentials))
     }
     
     func generateClient() {
@@ -87,7 +58,7 @@ class ClientGenerator {
         if !credentials.isUsable() {
             regenerateCredentials()
         } else {
-            informDelegate()
+            delegate.clientCreated(OAuthSwiftClient(credential: credentials))
         }
     }
 }

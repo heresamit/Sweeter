@@ -93,6 +93,7 @@ class OAuth1Swift {
             data, response in
             let responseString = NSString(data: data, encoding: NSUTF8StringEncoding) as String
             let parameters = responseString.parametersFromQueryString()
+            self.saveUserInfo(parameters)
             self.client.credential.oauth_token = parameters["oauth_token"]!
             self.client.credential.oauth_token_secret = parameters["oauth_token_secret"]!
             success(credential: self.client.credential, response: response)
@@ -104,5 +105,10 @@ class OAuth1Swift {
             userInfo: [CallbackNotification.optionsURLKey: url])
         NSNotificationCenter.defaultCenter().postNotification(notification)
     }
-
+    
+    func saveUserInfo(params: Dictionary<String, String>) {
+        NSUserDefaults.standardUserDefaults().setObject(params["user_id"], forKey: "mainUserId")
+        NSUserDefaults.standardUserDefaults().setObject(params["screen_name"], forKey: "mainUserScreenName")
+        NSUserDefaults.standardUserDefaults().synchronize()
+    }
 }
