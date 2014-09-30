@@ -9,26 +9,29 @@
 import Foundation
 
 let RequestHandlerIsReadyNotification = "RequestHandlerIsReadyNotification"
+let UserImageUpdatedNotification = "UserImageUpdatedNotification"
 
 protocol ClientGeneratorDelegate {
     func clientCreated (client :OAuthSwiftClient) -> ()
 }
 
 protocol RequestHandlerUser {
-    var observer: AnyObject? { get set }
+    var requestHandlerReadyNotificationObserver: AnyObject? { get set }
     func requestHandlerIsReady()
 }
 
-func isFirstRun() -> Bool {
-    if !NSUserDefaults.standardUserDefaults().boolForKey("notFirstRun") {
-        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "notFirstRun")
-        return true
-    }
-    return false
+func isAuthenticated() -> Bool {
+    return NSUserDefaults.standardUserDefaults().boolForKey("isAuthenticated")
 }
 
 func getMainUser() -> User {
     let mainUserName: String = NSUserDefaults.standardUserDefaults().objectForKey("mainUserScreenName") as String
-    let mainUserId: String = NSUserDefaults.standardUserDefaults().objectForKey("mainUserId") as String
+    let mainUserId = NSUserDefaults.standardUserDefaults().integerForKey("mainUserId")
     return User(id: mainUserId, screenName: mainUserName)
+}
+
+func saveMainUserToUserDefaults(id: Int, screenName: String) {
+    NSUserDefaults.standardUserDefaults().setInteger(id, forKey: "mainUserId")
+    NSUserDefaults.standardUserDefaults().setObject(screenName, forKey: "mainUserScreenName")
+    NSUserDefaults.standardUserDefaults().synchronize()
 }

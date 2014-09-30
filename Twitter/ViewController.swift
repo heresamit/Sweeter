@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController, RequestHandlerUser {
     
-    var observer: AnyObject?
+    var requestHandlerReadyNotificationObserver: AnyObject?
 
     @IBAction func authenticatePressed(sender: UIButton) {
         if RequestHandler.sharedInstance.isReady {
@@ -20,7 +20,7 @@ class ViewController: UIViewController, RequestHandlerUser {
             let notificationCenter = NSNotificationCenter.defaultCenter()
             let mainQueue = NSOperationQueue.mainQueue()
             
-            self.observer = notificationCenter.addObserverForName(RequestHandlerIsReadyNotification, object: nil, queue: mainQueue) { _ in
+            self.requestHandlerReadyNotificationObserver = notificationCenter.addObserverForName(RequestHandlerIsReadyNotification, object: nil, queue: mainQueue) { _ in
                 self.requestHandlerIsReady()
             }
         }
@@ -44,7 +44,7 @@ class ViewController: UIViewController, RequestHandlerUser {
     }
     
     override func viewWillDisappear(animated: Bool) {
-        NSNotificationCenter.defaultCenter().removeObserver(self.observer!)
+        NSNotificationCenter.defaultCenter().removeObserver(self.requestHandlerReadyNotificationObserver!)
     }
 }
 

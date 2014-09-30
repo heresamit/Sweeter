@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var vc: UIViewController
         
         // Override point for customization after application launch.
-        if isFirstRun() {
+        if !isAuthenticated() {
             vc = storyboard.instantiateViewControllerWithIdentifier("AuthenticateVC") as ViewController
         } else {
             let upvc = storyboard.instantiateViewControllerWithIdentifier("UserProfileVC") as UserProfileViewController
