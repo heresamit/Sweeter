@@ -15,16 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         var vc: UIViewController
-        
-        
-        // Override point for customization after application launch.
         if !isAuthenticated() {
             vc = storyboard.instantiateViewControllerWithIdentifier("AuthenticateVC") as ViewController
         } else {
             let upvc = storyboard.instantiateViewControllerWithIdentifier("UserProfileVC") as UserProfileViewController
-            upvc.user = getMainUser()
+            upvc.displayingMainUser = true
+            upvc.userID = getMainUserId()
             vc = upvc
         }
         

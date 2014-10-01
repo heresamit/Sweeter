@@ -297,7 +297,6 @@ access your twitter data.</string>
         <!--User List View Controller-->
         <scene sceneID="dgp-oa-UfL">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ykS-t9-VIS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="UserListViewController" id="gJe-yU-mO0" customClass="UserListViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="FGg-5J-quS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -359,6 +358,7 @@ access your twitter data.</string>
                         </connections>
                     </tableView>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ykS-t9-VIS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2946" y="-5231"/>
         </scene>

@@ -38,7 +38,9 @@ class UserListViewController: UITableViewController {
         var user = users[indexPath.row]
         cell.nameLabel?.text = user.name
         cell.screenNameLabel?.text = "@" + user.screenName
-        cell.imageView?.image = user.avatar
+        if let data = user.avatarData {
+            cell.imageView?.image = UIImage(data: data)
+        }
         return cell
     }
     

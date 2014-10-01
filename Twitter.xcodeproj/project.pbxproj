@@ -169,10 +169,10 @@
 		DFC3AB7819D68DDF003D75C1 /* Twitter */ = {
 			isa = PBXGroup;
 			children = (
+				DFC3AB7B19D68DDF003D75C1 /* AppDelegate.swift */,
 				DF8ADDEB19DA92D000E2CE54 /* Views */,
 				DF5843D919D6C7B50030BD8A /* Protocols */,
 				DF5843D619D6B14F0030BD8A /* Model */,
-				DFC3AB7B19D68DDF003D75C1 /* AppDelegate.swift */,
 				DF8ADDEC19DA92DA00E2CE54 /* Controllers */,
 				DFC3AB8219D68DDF003D75C1 /* Main.storyboard */,
 				DFC3AB8519D68DDF003D75C1 /* Images.xcassets */,

@@ -22,10 +22,13 @@ class TweetsTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath:indexPath) as TweetCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("cell") as TweetCell
         var tweet = tweets[indexPath.row]
         
-        cell.imgView.image = tweet.creator?.avatar
+        if let data = tweet.creator!.avatarData {
+            cell.imgView.image = UIImage(data: data)
+        }
+        
         cell.screenNameLabel.text = "@" + tweet.creator!.screenName
         cell.nameLabel.text = tweet.creator!.name
         cell.tweetTextLabel.text = tweet.text
@@ -33,9 +36,10 @@ class TweetsTableViewController: UITableViewController {
         return cell
     }
     
-    override func viewDidAppear(animated: Bool) {
-        tableView.reloadData()
-    }
-    
+//    override func viewDidAppear(animated: Bool) {
+//        super.viewDidAppear(animated)
+//        tableView.reloadData()
+//    }
+//    
 }
 

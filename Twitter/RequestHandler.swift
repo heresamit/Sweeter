@@ -35,26 +35,26 @@ class RequestHandler: ClientGeneratorDelegate  {
                 userInfo: nil))
     }
     
-    func getUserInfo(id: Int, onCompletion:(userDict: NSDictionary?) -> ()) {
+    func getUserInfo(id: Double, onCompletion:(userDict: NSDictionary?) -> ()) {
         if isReady {
+            println(NSNumber(longLong: Int64(id)))
             client!.get("https://api.twitter.com/1.1/users/show.json",
-                parameters: ["user_id" : id],
+                parameters: ["user_id" : NSNumber(longLong: Int64(id))],
                 success: {
                     data, response in
                     onCompletion(userDict: NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSDictionary)
                 },
                 failure: {
                     error in
-                    
             })
         }
     }
     
-    func downloadImage(urlString: String, onDownload:(downloadedImage: UIImage) -> ()) {
+    func downloadImage(urlString: String, onDownload:(downloadedImageData: NSData) -> ()) {
         let request = NSURLRequest(URL: NSURL(string:urlString))
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {
             response, data, error in
-            onDownload(downloadedImage: UIImage(data: data))
+            onDownload(downloadedImageData:data)
         }
     }
     
@@ -70,12 +70,13 @@ class RequestHandler: ClientGeneratorDelegate  {
         )
     }
     
-    func getUserTimeline(id: Int, count: Int, onCompletion: (tweets: NSArray?)->()) {
+    func getUserTimeline(id: Double, count: Int, onCompletion: (tweets: NSArray?)->()) {
         if isReady {
             getTimeline("https://api.twitter.com/1.1/statuses/user_timeline.json",
                 params:[
                     "count" : count,
-                    "user_id" : id],
+                    "user_id" : NSNumber(longLong: Int64(id))
+                ],
                 onCompletion: onCompletion)
         }
     }
@@ -88,13 +89,13 @@ class RequestHandler: ClientGeneratorDelegate  {
         }
     }
     
-    func getFollowers(userID: Int, count: Int, onUserLoad:(user: User) -> ()) {
+    func getFollowers(id: Double, count: Int, onUserLoad:(user: User) -> ()) {
         //TODO NEXT CURSOR
         if isReady {
             client!.get("https://api.twitter.com/1.1/followers/list.json",
                 parameters: [
                     "count" : count,
-                    "user_id" : userID,
+                    "user_id" : NSNumber(longLong: Int64(id)),
                     "skip_status" : 1
                 ],
                 success: {
@@ -103,7 +104,9 @@ class RequestHandler: ClientGeneratorDelegate  {
                         if let users = userIDsDict["users"] as? NSArray {
                             for user in users {
                                 if let userDict = user as? NSDictionary {
-                                    if !User.exists(userDict["id"] as Int) {
+                                    if let user = User.userForID(Double(userDict["id"] as NSNumber)) {
+                                        onUserLoad(user: user)
+                                    } else {
                                         if let newUser = User.userFromJsonDict(userDict) {
                                             onUserLoad(user: newUser)
                                         }
@@ -113,11 +116,11 @@ class RequestHandler: ClientGeneratorDelegate  {
                             }
                         }
                     }
-            },
+                },
                 failure: {
                     _ in
             })
-
+            
         }
     }
 }

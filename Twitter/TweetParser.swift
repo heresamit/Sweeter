@@ -12,8 +12,9 @@ class TweetParser {
     class func parseToTweet(tweetJson: NSDictionary) -> Tweet {
         let tweet = Tweet(id: tweetJson["id"] as Int)
         tweet.text = tweetJson["text"] as? String
-        //[TODO] Check if user already in database
-        if !userExists(tweetJson["id"] as Int) {
+        if let user = User.userForID(Double(tweetJson["id"] as NSNumber)) {
+            tweet.creator = user
+        } else {
             tweet.creator = User.userFromJsonDict(tweetJson["user"] as NSDictionary)
         }
         tweet.createdAt = dateFromString(tweetJson["created_at"] as String)
@@ -24,9 +25,5 @@ class TweetParser {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "E MMM HH:mm:ss Z y"
         return dateFormatter.dateFromString(dateStr)
-    }
-    
-    class func userExists(userID: Int) -> Bool {
-        return false
     }
 }

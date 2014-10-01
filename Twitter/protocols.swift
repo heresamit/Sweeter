@@ -6,10 +6,13 @@
 //  Copyright (c) 2014 Amit Chowdhary. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 let RequestHandlerIsReadyNotification = "RequestHandlerIsReadyNotification"
 let UserImageUpdatedNotification = "UserImageUpdatedNotification"
+
+let storyboard = UIStoryboard(name: "Main", bundle: nil)
+let delegate = UIApplication.sharedApplication().delegate as AppDelegate
 
 protocol ClientGeneratorDelegate {
     func clientCreated (client :OAuthSwiftClient) -> ()
@@ -24,14 +27,13 @@ func isAuthenticated() -> Bool {
     return NSUserDefaults.standardUserDefaults().boolForKey("isAuthenticated")
 }
 
-func getMainUser() -> User {
-    let mainUserName: String = NSUserDefaults.standardUserDefaults().objectForKey("mainUserScreenName") as String
-    let mainUserId = NSUserDefaults.standardUserDefaults().integerForKey("mainUserId")
-    return User(id: mainUserId, screenName: mainUserName)
+func getMainUserId() -> (Double) {
+    return NSUserDefaults.standardUserDefaults().doubleForKey("mainUserId")
 }
 
-func saveMainUserToUserDefaults(id: Int, screenName: String) {
-    NSUserDefaults.standardUserDefaults().setInteger(id, forKey: "mainUserId")
+func saveMainUserToUserDefaults(id: Double, screenName: String) {
+    println(id)
+    NSUserDefaults.standardUserDefaults().setDouble(id, forKey: "mainUserId")
     NSUserDefaults.standardUserDefaults().setObject(screenName, forKey: "mainUserScreenName")
     NSUserDefaults.standardUserDefaults().synchronize()
 }

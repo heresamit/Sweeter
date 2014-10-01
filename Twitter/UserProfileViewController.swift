@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class UserProfileViewController: UIViewController, RequestHandlerUser {
     
@@ -21,6 +22,8 @@ class UserProfileViewController: UIViewController, RequestHandlerUser {
     var requestHandlerReadyNotificationObserver: AnyObject?
     var userImageUpdatedNotificationObserver: AnyObject?
     var canShowStatuses: Bool = false
+    var displayingMainUser: Bool = false
+    var userID: Double!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,9 +37,11 @@ class UserProfileViewController: UIViewController, RequestHandlerUser {
             notification in
             if let updatedUser = notification.userInfo?["user"] as? User {
                 if updatedUser.id == self.user!.id {
-                    self.imgView.image = self.user!.image!
-                    self.imageDownloadingActivityIndicatorView.stopAnimating()
-                    self.canShowStatuses = true
+                    if let data =  self.user!.imageData {
+                        self.imgView.image = UIImage(data: data)
+                        self.imageDownloadingActivityIndicatorView.stopAnimating()
+                        self.canShowStatuses = true
+                    }
                 }
             }
         }
@@ -50,13 +55,25 @@ class UserProfileViewController: UIViewController, RequestHandlerUser {
         }
         // Do any additional setup after loading the view, typically from a nib.
     }
-    
+
     func requestHandlerIsReady() {
-        updateUser()
+        if user == nil {
+            if let tempUser = User.userForID(userID) {
+                user = tempUser
+                self.imgView.image = UIImage(data: user!.imageData!)
+                self.imageDownloadingActivityIndicatorView.stopAnimating()
+                self.canShowStatuses = true
+                self.updateView()
+            } else {
+                downloadUser()
+            }
+        } else {
+            updateView()
+        }
     }
     
-    func updateUser() {
-        RequestHandler.sharedInstance.getUserInfo(user!.id) {
+    func downloadUser() {
+        RequestHandler.sharedInstance.getUserInfo(userID) {
             dictOptional in
             if let userDict = dictOptional {
                 self.user = User.userFromJsonDict(userDict)
@@ -79,7 +96,8 @@ class UserProfileViewController: UIViewController, RequestHandlerUser {
                 vc.tweets = tweetsArray
                 self.navigationController?.pushViewController(vc, animated: true)
             }
-            if user!.id == getMainUser().id {
+            //TODO Show saved Tweets first
+            if displayingMainUser {
                 RequestHandler.sharedInstance.getHomeTimeline(10, onCompletion: onCompletion)
             } else {
                 RequestHandler.sharedInstance.getUserTimeline(user!.id, count: 10, onCompletion: onCompletion)
@@ -114,11 +132,6 @@ class UserProfileViewController: UIViewController, RequestHandlerUser {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        //        idLabel.text = user!.id
-        updateView()
     }
     
     override func viewWillDisappear(animated: Bool) {

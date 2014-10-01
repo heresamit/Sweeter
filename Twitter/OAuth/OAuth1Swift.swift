@@ -109,9 +109,8 @@ class OAuth1Swift {
     func saveMainUserInfo(parameters: Dictionary<String, String>) {
         if let idStr = parameters["user_id"] {
             if let screenName =  parameters["screen_name"] {
-                if let id = idStr.toInt() {
-                    saveMainUserToUserDefaults(id, screenName)
-                }
+                let id = NSString(string: idStr).doubleValue
+                saveMainUserToUserDefaults(id, screenName)
             }
         }
     }
