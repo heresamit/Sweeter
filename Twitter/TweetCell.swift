@@ -8,11 +8,7 @@
 
 import UIKit
 
-class TweetCell: UITableViewCell {
+class TweetCell: UserCell {
 
-    @IBOutlet weak var imgView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var screenNameLabel: UILabel!
     @IBOutlet weak var tweetTextLabel: FlexibleLabel!
-    
 }

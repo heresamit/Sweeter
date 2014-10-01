@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         var vc: UIViewController
         
+        
         // Override point for customization after application launch.
         if !isAuthenticated() {
             vc = storyboard.instantiateViewControllerWithIdentifier("AuthenticateVC") as ViewController
@@ -27,9 +28,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             vc = upvc
         }
         
+        let nvc = UINavigationController(rootViewController: vc)
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
-        self.window?.rootViewController = vc
+        self.window?.rootViewController = nvc
         self.window?.makeKeyAndVisible()
         
         return true

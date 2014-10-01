@@ -18,6 +18,8 @@
 		DF8ADDE819DA76F000E2CE54 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8ADDE719DA76F000E2CE54 /* Tweet.swift */; };
 		DF8ADDEA19DA779500E2CE54 /* TweetParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8ADDE919DA779500E2CE54 /* TweetParser.swift */; };
 		DF8ADDEE19DA92E800E2CE54 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8ADDED19DA92E800E2CE54 /* TweetCell.swift */; };
+		DF9A8F3119DBC9DA00617365 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9A8F3019DBC9DA00617365 /* UserListViewController.swift */; };
+		DF9A8F3319DBD44500617365 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9A8F3219DBD44500617365 /* UserCell.swift */; };
 		DFC3AB7C19D68DDF003D75C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC3AB7B19D68DDF003D75C1 /* AppDelegate.swift */; };
 		DFC3AB7F19D68DDF003D75C1 /* Twitter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DFC3AB7D19D68DDF003D75C1 /* Twitter.xcdatamodeld */; };
 		DFC3AB8119D68DDF003D75C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC3AB8019D68DDF003D75C1 /* ViewController.swift */; };
@@ -59,6 +61,8 @@
 		DF8ADDE719DA76F000E2CE54 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		DF8ADDE919DA779500E2CE54 /* TweetParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetParser.swift; sourceTree = "<group>"; };
 		DF8ADDED19DA92E800E2CE54 /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
+		DF9A8F3019DBC9DA00617365 /* UserListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
+		DF9A8F3219DBD44500617365 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		DFC3AB7619D68DDF003D75C1 /* Twitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFC3AB7A19D68DDF003D75C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFC3AB7B19D68DDF003D75C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +132,7 @@
 			children = (
 				DF8ADDED19DA92E800E2CE54 /* TweetCell.swift */,
 				DF7EB12A19DA99FF004DE9FB /* FlexibleLabel.swift */,
+				DF9A8F3219DBD44500617365 /* UserCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -138,6 +143,7 @@
 				DF5843E419D6F4A90030BD8A /* UserProfileViewController.swift */,
 				DFC3AB8019D68DDF003D75C1 /* ViewController.swift */,
 				DF7EB12C19DA9FDB004DE9FB /* TweetsTableViewController.swift */,
+				DF9A8F3019DBC9DA00617365 /* UserListViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -344,10 +350,12 @@
 				DFC3ABCD19D69358003D75C1 /* String+OAuthSwift.swift in Sources */,
 				DF5843E519D6F4A90030BD8A /* UserProfileViewController.swift in Sources */,
 				DFC3AB7C19D68DDF003D75C1 /* AppDelegate.swift in Sources */,
+				DF9A8F3319DBD44500617365 /* UserCell.swift in Sources */,
 				DFC3AB7F19D68DDF003D75C1 /* Twitter.xcdatamodeld in Sources */,
 				DFC3ABD319D69358003D75C1 /* OAuthSwiftHTTPRequest.swift in Sources */,
 				DF8ADDEE19DA92E800E2CE54 /* TweetCell.swift in Sources */,
 				DF27552219D73D7000437B56 /* RequestHandler.swift in Sources */,
+				DF9A8F3119DBC9DA00617365 /* UserListViewController.swift in Sources */,
 				DF5843D819D6B1650030BD8A /* ClientGenerator.swift in Sources */,
 				DFC3ABCC19D69358003D75C1 /* NSURL+OAuthSwift.swift in Sources */,
 				DF8ADDE819DA76F000E2CE54 /* Tweet.swift in Sources */,

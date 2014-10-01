@@ -30,7 +30,8 @@ class ViewController: UIViewController, RequestHandlerUser {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         var  vc = storyboard.instantiateViewControllerWithIdentifier("UserProfileVC") as UserProfileViewController
         vc.user = getMainUser()
-        self.presentViewController(vc, animated: true, completion: nil)
+//        self.presentViewController(vc, animated: true, completion: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     override func viewDidLoad() {

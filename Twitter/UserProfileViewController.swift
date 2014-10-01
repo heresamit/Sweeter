@@ -67,19 +67,38 @@ class UserProfileViewController: UIViewController, RequestHandlerUser {
     
     @IBAction func imageButtonPressed(sender: AnyObject) {
         if canShowStatuses {
-            println("image button pressed")
-            RequestHandler.sharedInstance.getHomeTimeline(100, onCompletion: {
-            tweets in
+            let onCompletion: (tweets: NSArray?)->() = {
+                tweets in
                 var tweetsArray: Array<Tweet> = [Tweet]()
                 for tweet in tweets! {
                     tweetsArray.append(TweetParser.parseToTweet(tweet as NSDictionary))
                 }
+                
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 var  vc = storyboard.instantiateViewControllerWithIdentifier("TweetsTableViewController") as TweetsTableViewController
                 vc.tweets = tweetsArray
-                self.presentViewController(vc, animated: true, completion: nil)
-            })
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            if user!.id == getMainUser().id {
+                RequestHandler.sharedInstance.getHomeTimeline(10, onCompletion: onCompletion)
+            } else {
+                RequestHandler.sharedInstance.getUserTimeline(user!.id, count: 10, onCompletion: onCompletion)
+            }
         }
+    }
+    
+    @IBAction func followersButtonPressed(sender: UIButton) {
+        if canShowFollowers() {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            var  vc = storyboard.instantiateViewControllerWithIdentifier("UserListViewController") as UserListViewController
+            vc.mainUser = user!
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    func canShowFollowers() -> Bool {
+        //[TODO]
+        return true
     }
     
     func updateView() {

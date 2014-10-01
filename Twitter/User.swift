@@ -17,6 +17,7 @@ class User {
     var description: String?
     var imageURL: String?
     var image: UIImage?
+    var avatar:UIImage?
     
     init(id: Int, screenName: String) {
         self.screenName = screenName
@@ -31,14 +32,25 @@ class User {
         self.description = description
         self.image = nil
         if imageURL != nil {
-            self.imageURL = imageURL!.stringByReplacingOccurrencesOfString("_normal", withString: "")
+            self.imageURL = imageURL
+            updateAvatar()
             updateImage()
+        }
+    }
+    
+    func updateAvatar() {
+        if let url = imageURL {
+            RequestHandler.sharedInstance.downloadImage(url) {
+                img in
+                self.avatar = img
+            }
         }
     }
     
     func updateImage() {
         if let url = imageURL {
-            RequestHandler.sharedInstance.downloadImage(url) {
+            let profilePicURL = self.imageURL!.stringByReplacingOccurrencesOfString("_normal", withString: "")
+            RequestHandler.sharedInstance.downloadImage(profilePicURL) {
                 img in
                 self.image = img
                 NSNotificationCenter.defaultCenter().postNotification(
@@ -56,6 +68,10 @@ class User {
             location: userDict["location"] as? String,
             description: userDict["description"] as? String,
             imageURL: userDict["profile_image_url"] as? String)
+    }
+    
+    class func exists(id: Int) -> Bool {
+        return false
     }
     
 }

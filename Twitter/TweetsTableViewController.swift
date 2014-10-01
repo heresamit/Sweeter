@@ -25,7 +25,7 @@ class TweetsTableViewController: UITableViewController {
         var cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath:indexPath) as TweetCell
         var tweet = tweets[indexPath.row]
         
-        cell.imgView.image = tweet.creator?.image
+        cell.imgView.image = tweet.creator?.avatar
         cell.screenNameLabel.text = "@" + tweet.creator!.screenName
         cell.nameLabel.text = tweet.creator!.name
         cell.tweetTextLabel.text = tweet.text
