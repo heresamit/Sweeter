@@ -10,20 +10,39 @@ import Foundation
 
 class TweetParser {
     class func parseToTweet(tweetJson: NSDictionary) -> Tweet {
-        let tweet = Tweet(id: tweetJson["id"] as Int)
-        tweet.text = tweetJson["text"] as? String
-        if let user = User.userForID(Double(tweetJson["id"] as NSNumber)) {
-            tweet.creator = user
+        let id = tweetJson["id"] as NSNumber
+        if let tweet = Tweet.tweetForID(id) {
+            return tweet
         } else {
-            tweet.creator = User.userFromJsonDict(tweetJson["user"] as NSDictionary)
+            return Tweet.newTweet {
+                tweet in
+                
+                tweet.id = id
+                tweet.text = tweetJson["text"] as? String
+                tweet.createdAt = self.dateFromString(tweetJson["created_at"] as String)
+
+                let userDict = tweetJson["user"] as NSDictionary
+                
+                if let user = User.userForID(Double(userDict["id"] as NSNumber)) {
+                    self.setCreatorForTweet(tweet, creator: user)
+                } else {
+                    if let user = User.userFromJsonDict(userDict) {
+                        self.setCreatorForTweet(tweet, creator: user)
+                    }
+                }
+            }
         }
-        tweet.createdAt = dateFromString(tweetJson["created_at"] as String)
-        return tweet
     }
     
-    class func dateFromString(dateStr: String) -> NSDate? {
+    private class func dateFromString(dateStr: String) -> NSDate? {
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "E MMM HH:mm:ss Z y"
+        dateFormatter.dateFormat = "EEE MMM dd HH:mm:ss Z yyyy"
         return dateFormatter.dateFromString(dateStr)
     }
+    
+    private class func setCreatorForTweet(tweet: Tweet, creator: User) {
+        tweet.creator = creator
+        creator.authoredTweets.addObject(tweet)
+    }
+    
 }

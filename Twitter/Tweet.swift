@@ -7,19 +7,34 @@
 //
 
 import Foundation
+import CoreData
 
-class Tweet {
-    var creator: User?
-    var createdAt: NSDate?
-    var text: String?
-    var id: Int
+@objc(Tweet)
+class Tweet: NSManagedObject {
     
-    init(id: Int) {
-        self.id = id
+    @NSManaged var creator: User?
+    @NSManaged var visibleTo: User?
+    @NSManaged var createdAt: NSDate?
+    @NSManaged var text: String?
+    @NSManaged var id: NSNumber
+    
+    class func newTweet(configurationBlock:(tweet: Tweet) -> ()) -> Tweet {
+        let moc = delegate.managedObjectContext
+        let tweet = NSEntityDescription.insertNewObjectForEntityForName("Tweet", inManagedObjectContext: moc!) as Tweet
+        configurationBlock(tweet: tweet)
+        delegate.saveContext()
+        return tweet
     }
     
-    convenience init() {
-        self.init(id: -1)
+    class func tweetForID(id: NSNumber) -> Tweet? {
+        let request = NSFetchRequest(entityName: "Tweet")
+        request.predicate = NSPredicate(format:"id == \(id.longLongValue)")
+        let moc = delegate.managedObjectContext
+        let result = moc!.executeFetchRequest(request, error: nil) as [Tweet]
+        if !result.isEmpty {
+            return result[0]
+        }
+        return nil
     }
-    
 }
+

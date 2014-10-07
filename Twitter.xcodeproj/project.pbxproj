@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DF27552019D73A2100437B56 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF27551F19D73A2100437B56 /* User.swift */; };
 		DF27552219D73D7000437B56 /* RequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF27552119D73D7000437B56 /* RequestHandler.swift */; };
+		DF4EEEC319E3D2750040A9C6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4EEEC219E3D2750040A9C6 /* User.swift */; };
 		DF5843D819D6B1650030BD8A /* ClientGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5843D719D6B1650030BD8A /* ClientGenerator.swift */; };
 		DF5843DB19D6C7C10030BD8A /* protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5843DA19D6C7C10030BD8A /* protocols.swift */; };
 		DF5843E319D6F0FF0030BD8A /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5843E219D6F0FF0030BD8A /* Authenticator.swift */; };
@@ -18,6 +18,7 @@
 		DF8ADDE819DA76F000E2CE54 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8ADDE719DA76F000E2CE54 /* Tweet.swift */; };
 		DF8ADDEA19DA779500E2CE54 /* TweetParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8ADDE919DA779500E2CE54 /* TweetParser.swift */; };
 		DF8ADDEE19DA92E800E2CE54 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8ADDED19DA92E800E2CE54 /* TweetCell.swift */; };
+		DF91A15219DE96980063E621 /* NFRCTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF91A15119DE96980063E621 /* NFRCTableViewController.swift */; };
 		DF9A8F3119DBC9DA00617365 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9A8F3019DBC9DA00617365 /* UserListViewController.swift */; };
 		DF9A8F3319DBD44500617365 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9A8F3219DBD44500617365 /* UserCell.swift */; };
 		DFC3AB7C19D68DDF003D75C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC3AB7B19D68DDF003D75C1 /* AppDelegate.swift */; };
@@ -50,8 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		DF27551F19D73A2100437B56 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DF27552119D73D7000437B56 /* RequestHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestHandler.swift; sourceTree = "<group>"; };
+		DF4EEEC219E3D2750040A9C6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
 		DF5843D719D6B1650030BD8A /* ClientGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientGenerator.swift; sourceTree = "<group>"; };
 		DF5843DA19D6C7C10030BD8A /* protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = protocols.swift; sourceTree = "<group>"; };
 		DF5843E219D6F0FF0030BD8A /* Authenticator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
@@ -61,6 +62,7 @@
 		DF8ADDE719DA76F000E2CE54 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		DF8ADDE919DA779500E2CE54 /* TweetParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetParser.swift; sourceTree = "<group>"; };
 		DF8ADDED19DA92E800E2CE54 /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
+		DF91A15119DE96980063E621 /* NFRCTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NFRCTableViewController.swift; sourceTree = "<group>"; };
 		DF9A8F3019DBC9DA00617365 /* UserListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		DF9A8F3219DBD44500617365 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		DFC3AB7619D68DDF003D75C1 /* Twitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,10 +111,10 @@
 		DF5843D619D6B14F0030BD8A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DF4EEEC219E3D2750040A9C6 /* User.swift */,
 				DF5843D719D6B1650030BD8A /* ClientGenerator.swift */,
 				DF8ADDE719DA76F000E2CE54 /* Tweet.swift */,
 				DF5843E219D6F0FF0030BD8A /* Authenticator.swift */,
-				DF27551F19D73A2100437B56 /* User.swift */,
 				DF27552119D73D7000437B56 /* RequestHandler.swift */,
 				DF8ADDE919DA779500E2CE54 /* TweetParser.swift */,
 			);
@@ -144,6 +146,7 @@
 				DFC3AB8019D68DDF003D75C1 /* ViewController.swift */,
 				DF7EB12C19DA9FDB004DE9FB /* TweetsTableViewController.swift */,
 				DF9A8F3019DBC9DA00617365 /* UserListViewController.swift */,
+				DF91A15119DE96980063E621 /* NFRCTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -337,6 +340,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF4EEEC319E3D2750040A9C6 /* User.swift in Sources */,
+				DF91A15219DE96980063E621 /* NFRCTableViewController.swift in Sources */,
 				DFC3AB8119D68DDF003D75C1 /* ViewController.swift in Sources */,
 				DF5843DB19D6C7C10030BD8A /* protocols.swift in Sources */,
 				DFC3ABCB19D69358003D75C1 /* Dictionary+OAuthSwift.swift in Sources */,
@@ -345,7 +350,6 @@
 				DF5843E319D6F0FF0030BD8A /* Authenticator.swift in Sources */,
 				DF8ADDEA19DA779500E2CE54 /* TweetParser.swift in Sources */,
 				DFC3ABD119D69358003D75C1 /* OAuthSwiftClient.swift in Sources */,
-				DF27552019D73A2100437B56 /* User.swift in Sources */,
 				DFC3ABD219D69358003D75C1 /* OAuthSwiftCredential.swift in Sources */,
 				DFC3ABCD19D69358003D75C1 /* String+OAuthSwift.swift in Sources */,
 				DF5843E519D6F4A90030BD8A /* UserProfileViewController.swift in Sources */,

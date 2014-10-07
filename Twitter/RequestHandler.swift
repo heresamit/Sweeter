@@ -35,11 +35,10 @@ class RequestHandler: ClientGeneratorDelegate  {
                 userInfo: nil))
     }
     
-    func getUserInfo(id: Double, onCompletion:(userDict: NSDictionary?) -> ()) {
+    func getUserInfo(id: NSNumber, onCompletion:(userDict: NSDictionary?) -> ()) {
         if isReady {
-            println(NSNumber(longLong: Int64(id)))
             client!.get("https://api.twitter.com/1.1/users/show.json",
-                parameters: ["user_id" : NSNumber(longLong: Int64(id))],
+                parameters: ["user_id" : id],
                 success: {
                     data, response in
                     onCompletion(userDict: NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSDictionary)
@@ -70,49 +69,80 @@ class RequestHandler: ClientGeneratorDelegate  {
         )
     }
     
-    func getUserTimeline(id: Double, count: Int, onCompletion: (tweets: NSArray?)->()) {
+    func fetchAuthoredTweetsForUser(user: User, onCompletion: (tweets: NSArray?)->()) {
         if isReady {
             getTimeline("https://api.twitter.com/1.1/statuses/user_timeline.json",
-                params:[
-                    "count" : count,
-                    "user_id" : NSNumber(longLong: Int64(id))
-                ],
-                onCompletion: onCompletion)
+                params:["user_id" : user.id],
+                onCompletion: {
+                    tweets in
+                    for tweet in tweets! {
+                        TweetParser.parseToTweet(tweet as NSDictionary)
+                    }
+            })
         }
     }
     
-    func getHomeTimeline(count: Int, onCompletion: (tweets: NSArray?)->()) {
+    func fetchVisibleTweetsForMainUser() {
         if isReady {
             getTimeline("https://api.twitter.com/1.1/statuses/home_timeline.json",
-                params:["count" : count],
-                onCompletion: onCompletion)
+                params: [
+                    "count" : 200
+                ],
+                onCompletion: {
+                    tweets in
+                    let mainUser = User.userForID(getMainUserId())
+                    if tweets != nil && mainUser != nil {
+                        for tweetDict in tweets! {
+                            let tweet = TweetParser.parseToTweet(tweetDict as NSDictionary)
+                            mainUser!.visibleTweets.addObject(tweet)
+                            tweet.visibleTo = mainUser!
+                        }
+                        delegate.saveContext()
+                    }
+            })
         }
     }
     
-    func getFollowers(id: Double, count: Int, onUserLoad:(user: User) -> ()) {
-        //TODO NEXT CURSOR
+    func fetchFollowersForUser(requestingUser: User, onUserLoad:(user: User) -> ()) {
         if isReady {
             client!.get("https://api.twitter.com/1.1/followers/list.json",
                 parameters: [
-                    "count" : count,
-                    "user_id" : NSNumber(longLong: Int64(id)),
-                    "skip_status" : 1
+                    "user_id" : requestingUser.id,
+                    "skip_status" : 1,
+                    "cursor" : requestingUser.nextFollowersCursor!
                 ],
                 success: {
                     data, response in
                     if let userIDsDict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSDictionary {
-                        if let users = userIDsDict["users"] as? NSArray {
-                            for user in users {
-                                if let userDict = user as? NSDictionary {
-                                    if let user = User.userForID(Double(userDict["id"] as NSNumber)) {
-                                        onUserLoad(user: user)
-                                    } else {
-                                        if let newUser = User.userFromJsonDict(userDict) {
-                                            onUserLoad(user: newUser)
+                        if let nextCursor = userIDsDict["next_cursor"] as? NSNumber {
+                            if nextCursor.longLongValue !=  requestingUser.nextFollowersCursor!.longLongValue {
+                                if let users = userIDsDict["users"] as? NSArray {
+                                    for user in users {
+                                        if let userDict = user as? NSDictionary {
+                                            
+                                            var fetchedUser: User?
+                                            
+                                            if let existingUser = User.userForID(Double(userDict["id"] as NSNumber)) {
+                                                fetchedUser = existingUser
+                                            } else {
+                                                if let newUser = User.userFromJsonDict(userDict) {
+                                                    fetchedUser = newUser
+                                                } else {
+                                                    fetchedUser = nil
+                                                }
+                                            }
+                                            
+                                            if fetchedUser != nil {
+                                                requestingUser.followers.addObject(fetchedUser!)
+                                                fetchedUser!.followed.addObject(requestingUser)
+                                                onUserLoad(user: fetchedUser!)
+                                            }
                                         }
+                                        
                                     }
                                 }
-                                
+                                requestingUser.nextFollowersCursor = userIDsDict["next_cursor"] as? NSNumber
+                                delegate.saveContext()
                             }
                         }
                     }

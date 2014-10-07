@@ -21,9 +21,9 @@ class UserProfileViewController: UIViewController, RequestHandlerUser {
     var user: User?
     var requestHandlerReadyNotificationObserver: AnyObject?
     var userImageUpdatedNotificationObserver: AnyObject?
-    var canShowStatuses: Bool = false
+    var canShowTweetsAndFollowers: Bool = false
     var displayingMainUser: Bool = false
-    var userID: Double!
+    var userID: NSNumber!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,11 +37,7 @@ class UserProfileViewController: UIViewController, RequestHandlerUser {
             notification in
             if let updatedUser = notification.userInfo?["user"] as? User {
                 if updatedUser.id == self.user!.id {
-                    if let data =  self.user!.imageData {
-                        self.imgView.image = UIImage(data: data)
-                        self.imageDownloadingActivityIndicatorView.stopAnimating()
-                        self.canShowStatuses = true
-                    }
+                    self.displayImage()
                 }
             }
         }
@@ -49,20 +45,18 @@ class UserProfileViewController: UIViewController, RequestHandlerUser {
         if RequestHandler.sharedInstance.isReady {
             requestHandlerIsReady()
         } else {
-            self.requestHandlerReadyNotificationObserver = notificationCenter.addObserverForName(RequestHandlerIsReadyNotification, object: nil, queue: mainQueue) { _ in
+            self.requestHandlerReadyNotificationObserver = notificationCenter.addObserverForName(RequestHandlerIsReadyNotification, object: nil, queue: mainQueue) {
+                _ in
                 self.requestHandlerIsReady()
             }
         }
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     func requestHandlerIsReady() {
         if user == nil {
             if let tempUser = User.userForID(userID) {
                 user = tempUser
-                self.imgView.image = UIImage(data: user!.imageData!)
-                self.imageDownloadingActivityIndicatorView.stopAnimating()
-                self.canShowStatuses = true
+                displayImage()
                 self.updateView()
             } else {
                 downloadUser()
@@ -83,46 +77,49 @@ class UserProfileViewController: UIViewController, RequestHandlerUser {
     }
     
     @IBAction func imageButtonPressed(sender: AnyObject) {
-        if canShowStatuses {
-            let onCompletion: (tweets: NSArray?)->() = {
-                tweets in
-                var tweetsArray: Array<Tweet> = [Tweet]()
-                for tweet in tweets! {
-                    tweetsArray.append(TweetParser.parseToTweet(tweet as NSDictionary))
-                }
-                
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                var  vc = storyboard.instantiateViewControllerWithIdentifier("TweetsTableViewController") as TweetsTableViewController
-                vc.tweets = tweetsArray
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
-            //TODO Show saved Tweets first
+        if canShowTweetsAndFollowers {
+            
             if displayingMainUser {
-                RequestHandler.sharedInstance.getHomeTimeline(10, onCompletion: onCompletion)
+                RequestHandler.sharedInstance.fetchVisibleTweetsForMainUser()
             } else {
-                RequestHandler.sharedInstance.getUserTimeline(user!.id, count: 10, onCompletion: onCompletion)
+                RequestHandler.sharedInstance.fetchAuthoredTweetsForUser(user!, { _ in })
             }
-        }
-    }
-    
-    @IBAction func followersButtonPressed(sender: UIButton) {
-        if canShowFollowers() {
+            
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            var  vc = storyboard.instantiateViewControllerWithIdentifier("UserListViewController") as UserListViewController
-            vc.mainUser = user!
+            var  vc = storyboard.instantiateViewControllerWithIdentifier("TweetsTableViewController") as TweetsTableViewController
+            vc.user = user!
+            vc.displayingMainUser = displayingMainUser
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
-    func canShowFollowers() -> Bool {
-        //[TODO]
-        return true
+    @IBAction func followersButtonPressed(sender: UIButton) {
+        if readyToShowTweetsAndFollowers() {
+            RequestHandler.sharedInstance.fetchFollowersForUser(user!, onUserLoad: { _ in })
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            var  vc = storyboard.instantiateViewControllerWithIdentifier("UserListViewController") as UserListViewController
+            vc.user = user!
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    func readyToShowTweetsAndFollowers() -> Bool {
+        return canShowTweetsAndFollowers
     }
     
     func updateView() {
         screenNameLabel.text = "@" + user!.screenName
         locationLabel.text = user!.location
         nameLabel.text = user!.name
+        displayImage()
+    }
+    
+    func displayImage() {
+        if imgView.image == nil && user!.imageData != nil {
+            imgView.image = UIImage(data: user!.imageData!)
+            imageDownloadingActivityIndicatorView.stopAnimating()
+            canShowTweetsAndFollowers = true
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -131,7 +128,6 @@ class UserProfileViewController: UIViewController, RequestHandlerUser {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewWillDisappear(animated: Bool) {

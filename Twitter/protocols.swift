@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 let RequestHandlerIsReadyNotification = "RequestHandlerIsReadyNotification"
 let UserImageUpdatedNotification = "UserImageUpdatedNotification"
@@ -27,13 +28,12 @@ func isAuthenticated() -> Bool {
     return NSUserDefaults.standardUserDefaults().boolForKey("isAuthenticated")
 }
 
-func getMainUserId() -> (Double) {
-    return NSUserDefaults.standardUserDefaults().doubleForKey("mainUserId")
+func getMainUserId() -> (NSNumber) {
+    return NSUserDefaults.standardUserDefaults().objectForKey("mainUserId") as NSNumber
 }
 
-func saveMainUserToUserDefaults(id: Double, screenName: String) {
-    println(id)
-    NSUserDefaults.standardUserDefaults().setDouble(id, forKey: "mainUserId")
+func saveMainUserToUserDefaults(id: NSNumber, screenName: String) {
+    NSUserDefaults.standardUserDefaults().setObject(id, forKey: "mainUserId")
     NSUserDefaults.standardUserDefaults().setObject(screenName, forKey: "mainUserScreenName")
     NSUserDefaults.standardUserDefaults().synchronize()
 }

@@ -7,38 +7,17 @@
 //
 
 import UIKit
+import CoreData
 
-class UserListViewController: UITableViewController {
-    var mainUser: User!
-    var users: Array<User> = Array<User>()
-    
-    func loadUsers() {
-        RequestHandler.sharedInstance.getFollowers(self.mainUser.id, count: 100, onUserLoad: {
-            user in
-            self.users.append(user)
-            self.tableView.reloadData()
-        })
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        loadUsers()
-    }
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users.count;
-    }
+class UserListViewController: NFRCTableViewController {
+    var user: User!
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("userCell", forIndexPath:indexPath) as UserCell
-        var user = users[indexPath.row]
-        cell.nameLabel?.text = user.name
-        cell.screenNameLabel?.text = "@" + user.screenName
-        if let data = user.avatarData {
+        var userToDisplay = fetchedResultController.objectAtIndexPath(indexPath) as User
+        cell.nameLabel?.text = userToDisplay.name
+        cell.screenNameLabel?.text = "@" + userToDisplay.screenName
+        if let data = userToDisplay.avatarData {
             cell.imageView?.image = UIImage(data: data)
         }
         return cell
@@ -50,18 +29,17 @@ class UserListViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
     }
     
-    override func viewDidAppear(animated: Bool) {
-        tableView.reloadData()
-    }
-    
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 75
-    }
-    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("UserProfileVC") as UserProfileViewController
-        vc.user = users[indexPath.row]
+        vc.user = fetchedResultController.objectAtIndexPath(indexPath) as? User
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    override func taskFetchRequest() -> NSFetchRequest {
+        let fetchRequest = NSFetchRequest(entityName: "User")
+        let sortDescriptor = NSSortDescriptor(key: "screenName", ascending: true)
+        fetchRequest.predicate = NSPredicate(format: "ANY followed.id == %@", user.id)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        return fetchRequest
+    }
 }

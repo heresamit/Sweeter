@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
-class TweetsTableViewController: UITableViewController {
-    var tweets: Array<Tweet>!
+class TweetsTableViewController: NFRCTableViewController {
+    var user: User!
+    var displayingMainUser: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,13 +19,9 @@ class TweetsTableViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tweets.count;
-    }
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("cell") as TweetCell
-        var tweet = tweets[indexPath.row]
+        var tweet = fetchedResultController.objectAtIndexPath(indexPath) as Tweet
         
         if let data = tweet.creator!.avatarData {
             cell.imgView.image = UIImage(data: data)
@@ -36,10 +34,17 @@ class TweetsTableViewController: UITableViewController {
         return cell
     }
     
-//    override func viewDidAppear(animated: Bool) {
-//        super.viewDidAppear(animated)
-//        tableView.reloadData()
-//    }
-//    
+    override func taskFetchRequest() -> NSFetchRequest {
+        let fetchRequest = NSFetchRequest(entityName: "Tweet")
+        let sortDescriptor = NSSortDescriptor(key: "createdAt", ascending: false)
+        if displayingMainUser {
+            fetchRequest.predicate = NSPredicate(format: "visibleTo.id == %@", user.id)
+        } else {
+            fetchRequest.predicate = NSPredicate(format: "creator.id == %@", user.id)
+        }
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        return fetchRequest
+    }
+    
 }
 

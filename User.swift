@@ -13,14 +13,39 @@ import CoreData
 class User: NSManagedObject {
     
     @NSManaged var screenName: String
-    @NSManaged var id: Double
+    @NSManaged var id: NSNumber!
     @NSManaged var name: String?
     @NSManaged var location: String?
     @NSManaged var userDescription: String?
     @NSManaged var imageURL: String?
     @NSManaged var imageData: NSData?
-    @NSManaged var avatarData:NSData?
+    @NSManaged var avatarData: NSData?
+    @NSManaged var nextFollowersCursor: NSNumber?
+    
+    var visibleTweets: NSMutableOrderedSet {
+        get {
+            return self.mutableOrderedSetValueForKey("visibleTweets")
+        }
+    }
+    
+    var authoredTweets: NSMutableOrderedSet {
+        get {
+            return self.mutableOrderedSetValueForKey("authoredTweets")
+        }
+    }
 
+    var followers: NSMutableSet {
+        get {
+            return self.mutableSetValueForKey("followers")
+        }
+    }
+    
+    var followed: NSMutableSet {
+        get {
+            return self.mutableSetValueForKey("followed")
+        }
+    }
+    
     func updateAvatar() {
         if let url = imageURL {
             RequestHandler.sharedInstance.downloadImage(url) {
@@ -49,7 +74,7 @@ class User: NSManagedObject {
     class func userFromJsonDict(userDict: NSDictionary) -> User? {
         return newUser {
             user in
-            user.id = Double(userDict["id"]! as NSNumber)
+            user.id = userDict["id"]! as NSNumber
             user.screenName = userDict["screen_name"] as String
             user.name = userDict["name"] as? String
             user.location = userDict["location"] as? String
@@ -57,13 +82,12 @@ class User: NSManagedObject {
             user.imageURL = userDict["profile_image_url"] as? String
             user.updateAvatar()
             user.updateImage()
-            delegate.saveContext()
         }
     }
     
-    class func userForID(id: Double) -> User? {
+    class func userForID(id: NSNumber) -> User? {
         let request = NSFetchRequest(entityName: "User")
-        request.predicate = NSPredicate(format:"id == \(id)")
+        request.predicate = NSPredicate(format:"id == \(id.longLongValue)")
         let moc = delegate.managedObjectContext
         let result = moc!.executeFetchRequest(request, error: nil) as [User]
         if !result.isEmpty {
@@ -75,7 +99,9 @@ class User: NSManagedObject {
     class func newUser(configurationBlock:(user: User) -> ()) -> User {
         let moc = delegate.managedObjectContext
         let user = NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext: moc!) as User
+        user.nextFollowersCursor = NSNumber(longLong: -1)
         configurationBlock(user: user)
+        delegate.saveContext()
         return user
     }
     
