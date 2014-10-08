@@ -17,6 +17,8 @@ class UserProfileViewController: UIViewController, RequestHandlerUser {
     
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var followersCountLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     
     var user: User?
     var requestHandlerReadyNotificationObserver: AnyObject?
@@ -111,6 +113,8 @@ class UserProfileViewController: UIViewController, RequestHandlerUser {
         screenNameLabel.text = "@" + user!.screenName
         locationLabel.text = user!.location
         nameLabel.text = user!.name
+        followersCountLabel.text = "\(user!.followersCount!)"
+        descriptionLabel.text = user!.userDescription!
         displayImage()
     }
     

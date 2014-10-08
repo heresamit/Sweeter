@@ -86,7 +86,7 @@ class RequestHandler: ClientGeneratorDelegate  {
         if isReady {
             getTimeline("https://api.twitter.com/1.1/statuses/home_timeline.json",
                 params: [
-                    "count" : 200
+                    "count" : 20
                 ],
                 onCompletion: {
                     tweets in

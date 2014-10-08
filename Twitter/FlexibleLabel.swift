@@ -14,7 +14,6 @@ class FlexibleLabel: UILabel {
         if numberOfLines == 0 && preferredMaxLayoutWidth != frame.size.width {
             preferredMaxLayoutWidth = frame.size.width
             setNeedsUpdateConstraints()
-            
         }
     }
     

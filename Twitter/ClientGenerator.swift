@@ -20,7 +20,7 @@ class ClientGenerator {
     private func loadCredentialsFromUserDefaults() {
         
         let keyArray = ["consumerKey", "consumerSecret", "oauthVerifier", "oauthToken", "oauthTokenSecret"]
-        
+
         var i = 0
         for key in keyArray {
             if let val = NSUserDefaults.standardUserDefaults().objectForKey(key) as? NSString {

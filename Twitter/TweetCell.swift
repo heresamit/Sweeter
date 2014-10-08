@@ -9,6 +9,5 @@
 import UIKit
 
 class TweetCell: UserCell {
-
     @IBOutlet weak var tweetTextLabel: FlexibleLabel!
 }

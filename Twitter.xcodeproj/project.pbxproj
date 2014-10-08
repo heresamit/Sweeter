@@ -10,7 +10,7 @@
 		DF27552219D73D7000437B56 /* RequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF27552119D73D7000437B56 /* RequestHandler.swift */; };
 		DF4EEEC319E3D2750040A9C6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4EEEC219E3D2750040A9C6 /* User.swift */; };
 		DF5843D819D6B1650030BD8A /* ClientGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5843D719D6B1650030BD8A /* ClientGenerator.swift */; };
-		DF5843DB19D6C7C10030BD8A /* protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5843DA19D6C7C10030BD8A /* protocols.swift */; };
+		DF5843DB19D6C7C10030BD8A /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5843DA19D6C7C10030BD8A /* Globals.swift */; };
 		DF5843E319D6F0FF0030BD8A /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5843E219D6F0FF0030BD8A /* Authenticator.swift */; };
 		DF5843E519D6F4A90030BD8A /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5843E419D6F4A90030BD8A /* UserProfileViewController.swift */; };
 		DF7EB12B19DA99FF004DE9FB /* FlexibleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7EB12A19DA99FF004DE9FB /* FlexibleLabel.swift */; };
@@ -54,7 +54,7 @@
 		DF27552119D73D7000437B56 /* RequestHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestHandler.swift; sourceTree = "<group>"; };
 		DF4EEEC219E3D2750040A9C6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
 		DF5843D719D6B1650030BD8A /* ClientGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientGenerator.swift; sourceTree = "<group>"; };
-		DF5843DA19D6C7C10030BD8A /* protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = protocols.swift; sourceTree = "<group>"; };
+		DF5843DA19D6C7C10030BD8A /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		DF5843E219D6F0FF0030BD8A /* Authenticator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
 		DF5843E419D6F4A90030BD8A /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		DF7EB12A19DA99FF004DE9FB /* FlexibleLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlexibleLabel.swift; sourceTree = "<group>"; };
@@ -124,7 +124,7 @@
 		DF5843D919D6C7B50030BD8A /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				DF5843DA19D6C7C10030BD8A /* protocols.swift */,
+				DF5843DA19D6C7C10030BD8A /* Globals.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -343,7 +343,7 @@
 				DF4EEEC319E3D2750040A9C6 /* User.swift in Sources */,
 				DF91A15219DE96980063E621 /* NFRCTableViewController.swift in Sources */,
 				DFC3AB8119D68DDF003D75C1 /* ViewController.swift in Sources */,
-				DF5843DB19D6C7C10030BD8A /* protocols.swift in Sources */,
+				DF5843DB19D6C7C10030BD8A /* Globals.swift in Sources */,
 				DFC3ABCB19D69358003D75C1 /* Dictionary+OAuthSwift.swift in Sources */,
 				DFC3ABCE19D69358003D75C1 /* HMACSHA1Signature.m in Sources */,
 				DFC3ABCF19D69358003D75C1 /* OAuth1Swift.swift in Sources */,
