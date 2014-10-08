@@ -37,3 +37,26 @@ func saveMainUserToUserDefaults(id: NSNumber, screenName: String) {
     NSUserDefaults.standardUserDefaults().setObject(screenName, forKey: "mainUserScreenName")
     NSUserDefaults.standardUserDefaults().synchronize()
 }
+
+extension NSDate {
+    func humanReadableTimeSinceNowString() -> String {
+        var ti = Int64(self.timeIntervalSinceNow)
+        if ti < 0 {
+            ti = ti * -1
+        }
+        
+        let minutes = (ti / 60) % 60
+        let hours = (ti / 3600) % 24
+        let days = (ti / 3600) / 24
+        
+        var str = "\(minutes)m"
+        if hours > 0 {
+            str = "\(hours)h " + str
+        }
+        if days > 0 {
+            str = "\(days)d " + str
+        }
+        
+        return str
+    }
+}

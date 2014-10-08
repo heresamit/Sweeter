@@ -18,6 +18,12 @@ class Tweet: NSManagedObject {
     @NSManaged var text: String?
     @NSManaged var id: NSNumber
     
+    var containedMedia: NSMutableSet {
+        get {
+            return self.mutableSetValueForKey("containedMedia")
+        }
+    }
+    
     class func newTweet(configurationBlock:(tweet: Tweet) -> ()) -> Tweet {
         let moc = delegate.managedObjectContext
         let tweet = NSEntityDescription.insertNewObjectForEntityForName("Tweet", inManagedObjectContext: moc!) as Tweet

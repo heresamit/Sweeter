@@ -65,12 +65,17 @@ class RequestHandler: ClientGeneratorDelegate  {
                 onCompletion(tweets: NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSArray)
             },
             failure: {
-                _ in}
+                _ in
+            }
         )
     }
     
-    func fetchAuthoredTweetsForUser(user: User, onCompletion: (tweets: NSArray?)->()) {
+    func fetchAuthoredTweetsForUser(user: User, maxID: NSNumber?, onCompletion: (tweets: NSArray?)->()) {
         if isReady {
+            var params: Dictionary<String, AnyObject> = ["count" : 20]
+            if maxID != nil {
+                params["max_id"] = maxID!
+            }
             getTimeline("https://api.twitter.com/1.1/statuses/user_timeline.json",
                 params:["user_id" : user.id],
                 onCompletion: {
@@ -82,12 +87,15 @@ class RequestHandler: ClientGeneratorDelegate  {
         }
     }
     
-    func fetchVisibleTweetsForMainUser() {
+    func fetchVisibleTweetsForMainUser(maxID: NSNumber?) {
         if isReady {
+            var params: Dictionary<String, AnyObject> = ["count" : 20]
+            if maxID != nil {
+                params["max_id"] = maxID!
+            }
+            
             getTimeline("https://api.twitter.com/1.1/statuses/home_timeline.json",
-                params: [
-                    "count" : 20
-                ],
+                params: params,
                 onCompletion: {
                     tweets in
                     let mainUser = User.userForID(getMainUserId())
@@ -104,7 +112,7 @@ class RequestHandler: ClientGeneratorDelegate  {
     }
     
     func fetchFollowersForUser(requestingUser: User, onUserLoad:(user: User) -> ()) {
-        if isReady {
+        if isReady && requestingUser.nextFollowersCursor!.longLongValue != 0 {
             client!.get("https://api.twitter.com/1.1/followers/list.json",
                 parameters: [
                     "user_id" : requestingUser.id,
@@ -115,35 +123,33 @@ class RequestHandler: ClientGeneratorDelegate  {
                     data, response in
                     if let userIDsDict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSDictionary {
                         if let nextCursor = userIDsDict["next_cursor"] as? NSNumber {
-                            if nextCursor.longLongValue !=  requestingUser.nextFollowersCursor!.longLongValue {
-                                if let users = userIDsDict["users"] as? NSArray {
-                                    for user in users {
-                                        if let userDict = user as? NSDictionary {
-                                            
-                                            var fetchedUser: User?
-                                            
-                                            if let existingUser = User.userForID(Double(userDict["id"] as NSNumber)) {
-                                                fetchedUser = existingUser
+                            if let users = userIDsDict["users"] as? NSArray {
+                                for user in users {
+                                    if let userDict = user as? NSDictionary {
+                                        
+                                        var fetchedUser: User?
+                                        
+                                        if let existingUser = User.userForID(Double(userDict["id"] as NSNumber)) {
+                                            fetchedUser = existingUser
+                                        } else {
+                                            if let newUser = User.userFromJsonDict(userDict) {
+                                                fetchedUser = newUser
                                             } else {
-                                                if let newUser = User.userFromJsonDict(userDict) {
-                                                    fetchedUser = newUser
-                                                } else {
-                                                    fetchedUser = nil
-                                                }
-                                            }
-                                            
-                                            if fetchedUser != nil {
-                                                requestingUser.followers.addObject(fetchedUser!)
-                                                fetchedUser!.followed.addObject(requestingUser)
-                                                onUserLoad(user: fetchedUser!)
+                                                fetchedUser = nil
                                             }
                                         }
                                         
+                                        if fetchedUser != nil {
+                                            requestingUser.followers.addObject(fetchedUser!)
+                                            fetchedUser!.followed.addObject(requestingUser)
+                                            onUserLoad(user: fetchedUser!)
+                                        }
                                     }
+                                    
                                 }
-                                requestingUser.nextFollowersCursor = userIDsDict["next_cursor"] as? NSNumber
-                                delegate.saveContext()
                             }
+                            requestingUser.nextFollowersCursor = nextCursor
+                            delegate.saveContext()
                         }
                     }
                 },

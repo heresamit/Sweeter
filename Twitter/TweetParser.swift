@@ -30,6 +30,15 @@ class TweetParser {
                         self.setCreatorForTweet(tweet, creator: user)
                     }
                 }
+                
+                if let entitiesDict = tweetJson["entities"] as? NSDictionary {
+                    if let mediaArray = entitiesDict["media"] as? NSArray {
+                        for mediaDict in mediaArray {
+                            let dict = mediaDict as NSDictionary
+                            tweet.containedMedia.addObject(Media.newMedia(dict, containedIn: tweet)!)
+                        }
+                    }
+                }
             }
         }
     }

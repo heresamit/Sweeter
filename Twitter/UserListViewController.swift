@@ -42,4 +42,10 @@ class UserListViewController: NFRCTableViewController {
         fetchRequest.sortDescriptors = [sortDescriptor]
         return fetchRequest
     }
+    
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row == fetchedResultController.fetchedObjects!.count - 1 {
+            RequestHandler.sharedInstance.fetchFollowersForUser(user, onUserLoad: { _ in })
+        }
+    }
 }

@@ -82,9 +82,9 @@ class UserProfileViewController: UIViewController, RequestHandlerUser {
         if canShowTweetsAndFollowers {
             
             if displayingMainUser {
-                RequestHandler.sharedInstance.fetchVisibleTweetsForMainUser()
+                RequestHandler.sharedInstance.fetchVisibleTweetsForMainUser(nil)
             } else {
-                RequestHandler.sharedInstance.fetchAuthoredTweetsForUser(user!, { _ in })
+                RequestHandler.sharedInstance.fetchAuthoredTweetsForUser(user!, maxID: nil, { _ in })
             }
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)

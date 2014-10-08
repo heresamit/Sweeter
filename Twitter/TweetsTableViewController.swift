@@ -46,5 +46,22 @@ class TweetsTableViewController: NFRCTableViewController {
         return fetchRequest
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TweetViewController") as TweetViewController
+        vc.tweet = fetchedResultController.objectAtIndexPath(indexPath) as? Tweet
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row == fetchedResultController.fetchedObjects!.count - 1 {
+            var tweet = fetchedResultController.objectAtIndexPath(indexPath) as Tweet
+            if displayingMainUser {
+                RequestHandler.sharedInstance.fetchVisibleTweetsForMainUser(tweet.id)
+            } else {
+                RequestHandler.sharedInstance.fetchAuthoredTweetsForUser(user!, maxID: tweet.id, { _ in })
+            }
+        }
+    }
+    
 }
 
