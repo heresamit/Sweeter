@@ -8,8 +8,32 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, RequestHandlerUser {
+    
+    var requestHandlerReadyNotificationObserver: AnyObject?
 
+    @IBAction func authenticatePressed(sender: UIButton) {
+        if RequestHandler.sharedInstance.isReady {
+            requestHandlerIsReady()
+        } else {
+            
+            let notificationCenter = NSNotificationCenter.defaultCenter()
+            let mainQueue = NSOperationQueue.mainQueue()
+            
+            self.requestHandlerReadyNotificationObserver = notificationCenter.addObserverForName(RequestHandlerIsReadyNotification, object: nil, queue: mainQueue) { _ in
+                self.requestHandlerIsReady()
+            }
+        }
+    }
+    
+    func requestHandlerIsReady() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        var  vc = storyboard.instantiateViewControllerWithIdentifier("UserProfileVC") as UserProfileViewController
+        vc.displayingMainUser = true
+        vc.userID = getMainUserId()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -19,7 +43,9 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    override func viewWillDisappear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().removeObserver(self.requestHandlerReadyNotificationObserver!)
+    }
 }
 

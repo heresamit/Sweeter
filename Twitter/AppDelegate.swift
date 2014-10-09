@@ -13,10 +13,24 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        var vc: UIViewController
+        if !isAuthenticated() {
+            vc = storyboard.instantiateViewControllerWithIdentifier("AuthenticateVC") as ViewController
+        } else {
+            let upvc = storyboard.instantiateViewControllerWithIdentifier("UserProfileVC") as UserProfileViewController
+            upvc.displayingMainUser = true
+            upvc.userID = getMainUserId()
+            vc = upvc
+        }
+        
+        let nvc = UINavigationController(rootViewController: vc)
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        self.window?.rootViewController = nvc
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
 
@@ -106,6 +120,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    func application(application: UIApplication!, openURL url: NSURL!, sourceApplication: String!, annotation: AnyObject!) -> Bool {
+        if url.host == "oauth-callback" {
+                OAuth1Swift.handleOpenURL(url)
+        }
+        return true
+    }
+
 
 }
 

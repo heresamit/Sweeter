@@ -7,6 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF27552219D73D7000437B56 /* RequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF27552119D73D7000437B56 /* RequestHandler.swift */; };
+		DF4EEEC319E3D2750040A9C6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4EEEC219E3D2750040A9C6 /* User.swift */; };
+		DF4EEEC519E53A150040A9C6 /* TweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4EEEC419E53A150040A9C6 /* TweetViewController.swift */; };
+		DF4EEEC719E5462A0040A9C6 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4EEEC619E5462A0040A9C6 /* Media.swift */; };
+		DF5843D819D6B1650030BD8A /* ClientGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5843D719D6B1650030BD8A /* ClientGenerator.swift */; };
+		DF5843DB19D6C7C10030BD8A /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5843DA19D6C7C10030BD8A /* Globals.swift */; };
+		DF5843E319D6F0FF0030BD8A /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5843E219D6F0FF0030BD8A /* Authenticator.swift */; };
+		DF5843E519D6F4A90030BD8A /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5843E419D6F4A90030BD8A /* UserProfileViewController.swift */; };
+		DF7EB12B19DA99FF004DE9FB /* FlexibleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7EB12A19DA99FF004DE9FB /* FlexibleLabel.swift */; };
+		DF7EB12D19DA9FDB004DE9FB /* TweetsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7EB12C19DA9FDB004DE9FB /* TweetsTableViewController.swift */; };
+		DF8ADDE819DA76F000E2CE54 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8ADDE719DA76F000E2CE54 /* Tweet.swift */; };
+		DF8ADDEA19DA779500E2CE54 /* TweetParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8ADDE919DA779500E2CE54 /* TweetParser.swift */; };
+		DF8ADDEE19DA92E800E2CE54 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8ADDED19DA92E800E2CE54 /* TweetCell.swift */; };
+		DF91A15219DE96980063E621 /* NFRCTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF91A15119DE96980063E621 /* NFRCTableViewController.swift */; };
+		DF9A8F3119DBC9DA00617365 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9A8F3019DBC9DA00617365 /* UserListViewController.swift */; };
+		DF9A8F3319DBD44500617365 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9A8F3219DBD44500617365 /* UserCell.swift */; };
 		DFC3AB7C19D68DDF003D75C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC3AB7B19D68DDF003D75C1 /* AppDelegate.swift */; };
 		DFC3AB7F19D68DDF003D75C1 /* Twitter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DFC3AB7D19D68DDF003D75C1 /* Twitter.xcdatamodeld */; };
 		DFC3AB8119D68DDF003D75C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC3AB8019D68DDF003D75C1 /* ViewController.swift */; };
@@ -14,6 +30,16 @@
 		DFC3AB8619D68DDF003D75C1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFC3AB8519D68DDF003D75C1 /* Images.xcassets */; };
 		DFC3AB8919D68DDF003D75C1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFC3AB8719D68DDF003D75C1 /* LaunchScreen.xib */; };
 		DFC3AB9519D68DDF003D75C1 /* TwitterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC3AB9419D68DDF003D75C1 /* TwitterTests.swift */; };
+		DFC3ABCB19D69358003D75C1 /* Dictionary+OAuthSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC3ABC019D69358003D75C1 /* Dictionary+OAuthSwift.swift */; };
+		DFC3ABCC19D69358003D75C1 /* NSURL+OAuthSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC3ABC119D69358003D75C1 /* NSURL+OAuthSwift.swift */; };
+		DFC3ABCD19D69358003D75C1 /* String+OAuthSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC3ABC219D69358003D75C1 /* String+OAuthSwift.swift */; };
+		DFC3ABCE19D69358003D75C1 /* HMACSHA1Signature.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC3ABC419D69358003D75C1 /* HMACSHA1Signature.m */; };
+		DFC3ABCF19D69358003D75C1 /* OAuth1Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC3ABC519D69358003D75C1 /* OAuth1Swift.swift */; };
+		DFC3ABD019D69358003D75C1 /* OAuth2Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC3ABC619D69358003D75C1 /* OAuth2Swift.swift */; };
+		DFC3ABD119D69358003D75C1 /* OAuthSwiftClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC3ABC819D69358003D75C1 /* OAuthSwiftClient.swift */; };
+		DFC3ABD219D69358003D75C1 /* OAuthSwiftCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC3ABC919D69358003D75C1 /* OAuthSwiftCredential.swift */; };
+		DFC3ABD319D69358003D75C1 /* OAuthSwiftHTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC3ABCA19D69358003D75C1 /* OAuthSwiftHTTPRequest.swift */; };
+		DFD2917A19D6A3C60034B906 /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = DFD2917919D6A3C60034B906 /* credentials.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +53,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DF27552119D73D7000437B56 /* RequestHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestHandler.swift; sourceTree = "<group>"; };
+		DF4EEEC219E3D2750040A9C6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
+		DF4EEEC419E53A150040A9C6 /* TweetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetViewController.swift; sourceTree = "<group>"; };
+		DF4EEEC619E5462A0040A9C6 /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
+		DF5843D719D6B1650030BD8A /* ClientGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientGenerator.swift; sourceTree = "<group>"; };
+		DF5843DA19D6C7C10030BD8A /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
+		DF5843E219D6F0FF0030BD8A /* Authenticator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
+		DF5843E419D6F4A90030BD8A /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		DF7EB12A19DA99FF004DE9FB /* FlexibleLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlexibleLabel.swift; sourceTree = "<group>"; };
+		DF7EB12C19DA9FDB004DE9FB /* TweetsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetsTableViewController.swift; sourceTree = "<group>"; };
+		DF8ADDE719DA76F000E2CE54 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
+		DF8ADDE919DA779500E2CE54 /* TweetParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetParser.swift; sourceTree = "<group>"; };
+		DF8ADDED19DA92E800E2CE54 /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
+		DF91A15119DE96980063E621 /* NFRCTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NFRCTableViewController.swift; sourceTree = "<group>"; };
+		DF9A8F3019DBC9DA00617365 /* UserListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
+		DF9A8F3219DBD44500617365 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		DFC3AB7619D68DDF003D75C1 /* Twitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFC3AB7A19D68DDF003D75C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFC3AB7B19D68DDF003D75C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +80,18 @@
 		DFC3AB8E19D68DDF003D75C1 /* TwitterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwitterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFC3AB9319D68DDF003D75C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFC3AB9419D68DDF003D75C1 /* TwitterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterTests.swift; sourceTree = "<group>"; };
+		DFC3ABC019D69358003D75C1 /* Dictionary+OAuthSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+OAuthSwift.swift"; sourceTree = "<group>"; };
+		DFC3ABC119D69358003D75C1 /* NSURL+OAuthSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+OAuthSwift.swift"; sourceTree = "<group>"; };
+		DFC3ABC219D69358003D75C1 /* String+OAuthSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+OAuthSwift.swift"; sourceTree = "<group>"; };
+		DFC3ABC319D69358003D75C1 /* HMACSHA1Signature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMACSHA1Signature.h; sourceTree = "<group>"; };
+		DFC3ABC419D69358003D75C1 /* HMACSHA1Signature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMACSHA1Signature.m; sourceTree = "<group>"; };
+		DFC3ABC519D69358003D75C1 /* OAuth1Swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth1Swift.swift; sourceTree = "<group>"; };
+		DFC3ABC619D69358003D75C1 /* OAuth2Swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2Swift.swift; sourceTree = "<group>"; };
+		DFC3ABC719D69358003D75C1 /* OAuthSwift-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OAuthSwift-Bridging-Header.h"; sourceTree = "<group>"; };
+		DFC3ABC819D69358003D75C1 /* OAuthSwiftClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthSwiftClient.swift; sourceTree = "<group>"; };
+		DFC3ABC919D69358003D75C1 /* OAuthSwiftCredential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthSwiftCredential.swift; sourceTree = "<group>"; };
+		DFC3ABCA19D69358003D75C1 /* OAuthSwiftHTTPRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthSwiftHTTPRequest.swift; sourceTree = "<group>"; };
+		DFD2917919D6A3C60034B906 /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +112,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF5843D619D6B14F0030BD8A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DF4EEEC219E3D2750040A9C6 /* User.swift */,
+				DF5843D719D6B1650030BD8A /* ClientGenerator.swift */,
+				DF8ADDE719DA76F000E2CE54 /* Tweet.swift */,
+				DF5843E219D6F0FF0030BD8A /* Authenticator.swift */,
+				DF27552119D73D7000437B56 /* RequestHandler.swift */,
+				DF8ADDE919DA779500E2CE54 /* TweetParser.swift */,
+				DF4EEEC619E5462A0040A9C6 /* Media.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		DF5843D919D6C7B50030BD8A /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				DF5843DA19D6C7C10030BD8A /* Globals.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		DF8ADDEB19DA92D000E2CE54 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DF8ADDED19DA92E800E2CE54 /* TweetCell.swift */,
+				DF7EB12A19DA99FF004DE9FB /* FlexibleLabel.swift */,
+				DF9A8F3219DBD44500617365 /* UserCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		DF8ADDEC19DA92DA00E2CE54 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DF5843E419D6F4A90030BD8A /* UserProfileViewController.swift */,
+				DFC3AB8019D68DDF003D75C1 /* ViewController.swift */,
+				DF7EB12C19DA9FDB004DE9FB /* TweetsTableViewController.swift */,
+				DF9A8F3019DBC9DA00617365 /* UserListViewController.swift */,
+				DF91A15119DE96980063E621 /* NFRCTableViewController.swift */,
+				DF4EEEC419E53A150040A9C6 /* TweetViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		DFC3AB6D19D68DDF003D75C1 = {
 			isa = PBXGroup;
 			children = (
@@ -80,11 +179,15 @@
 			isa = PBXGroup;
 			children = (
 				DFC3AB7B19D68DDF003D75C1 /* AppDelegate.swift */,
-				DFC3AB8019D68DDF003D75C1 /* ViewController.swift */,
+				DF8ADDEB19DA92D000E2CE54 /* Views */,
+				DF5843D919D6C7B50030BD8A /* Protocols */,
+				DF5843D619D6B14F0030BD8A /* Model */,
+				DF8ADDEC19DA92DA00E2CE54 /* Controllers */,
 				DFC3AB8219D68DDF003D75C1 /* Main.storyboard */,
 				DFC3AB8519D68DDF003D75C1 /* Images.xcassets */,
 				DFC3AB8719D68DDF003D75C1 /* LaunchScreen.xib */,
 				DFC3AB7D19D68DDF003D75C1 /* Twitter.xcdatamodeld */,
+				DFC3ABBE19D69358003D75C1 /* OAuth */,
 				DFC3AB7919D68DDF003D75C1 /* Supporting Files */,
 			);
 			path = Twitter;
@@ -94,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				DFC3AB7A19D68DDF003D75C1 /* Info.plist */,
+				DFD2917919D6A3C60034B906 /* credentials.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -113,6 +217,32 @@
 				DFC3AB9319D68DDF003D75C1 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DFC3ABBE19D69358003D75C1 /* OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				DFC3ABBF19D69358003D75C1 /* extension */,
+				DFC3ABC319D69358003D75C1 /* HMACSHA1Signature.h */,
+				DFC3ABC419D69358003D75C1 /* HMACSHA1Signature.m */,
+				DFC3ABC519D69358003D75C1 /* OAuth1Swift.swift */,
+				DFC3ABC619D69358003D75C1 /* OAuth2Swift.swift */,
+				DFC3ABC719D69358003D75C1 /* OAuthSwift-Bridging-Header.h */,
+				DFC3ABC819D69358003D75C1 /* OAuthSwiftClient.swift */,
+				DFC3ABC919D69358003D75C1 /* OAuthSwiftCredential.swift */,
+				DFC3ABCA19D69358003D75C1 /* OAuthSwiftHTTPRequest.swift */,
+			);
+			path = OAuth;
+			sourceTree = "<group>";
+		};
+		DFC3ABBF19D69358003D75C1 /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				DFC3ABC019D69358003D75C1 /* Dictionary+OAuthSwift.swift */,
+				DFC3ABC119D69358003D75C1 /* NSURL+OAuthSwift.swift */,
+				DFC3ABC219D69358003D75C1 /* String+OAuthSwift.swift */,
+			);
+			path = extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,6 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFC3AB8419D68DDF003D75C1 /* Main.storyboard in Resources */,
+				DFD2917A19D6A3C60034B906 /* credentials.plist in Resources */,
 				DFC3AB8919D68DDF003D75C1 /* LaunchScreen.xib in Resources */,
 				DFC3AB8619D68DDF003D75C1 /* Images.xcassets in Resources */,
 			);
@@ -215,9 +346,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF4EEEC319E3D2750040A9C6 /* User.swift in Sources */,
+				DF91A15219DE96980063E621 /* NFRCTableViewController.swift in Sources */,
+				DF4EEEC719E5462A0040A9C6 /* Media.swift in Sources */,
+				DF4EEEC519E53A150040A9C6 /* TweetViewController.swift in Sources */,
 				DFC3AB8119D68DDF003D75C1 /* ViewController.swift in Sources */,
+				DF5843DB19D6C7C10030BD8A /* Globals.swift in Sources */,
+				DFC3ABCB19D69358003D75C1 /* Dictionary+OAuthSwift.swift in Sources */,
+				DFC3ABCE19D69358003D75C1 /* HMACSHA1Signature.m in Sources */,
+				DFC3ABCF19D69358003D75C1 /* OAuth1Swift.swift in Sources */,
+				DF5843E319D6F0FF0030BD8A /* Authenticator.swift in Sources */,
+				DF8ADDEA19DA779500E2CE54 /* TweetParser.swift in Sources */,
+				DFC3ABD119D69358003D75C1 /* OAuthSwiftClient.swift in Sources */,
+				DFC3ABD219D69358003D75C1 /* OAuthSwiftCredential.swift in Sources */,
+				DFC3ABCD19D69358003D75C1 /* String+OAuthSwift.swift in Sources */,
+				DF5843E519D6F4A90030BD8A /* UserProfileViewController.swift in Sources */,
 				DFC3AB7C19D68DDF003D75C1 /* AppDelegate.swift in Sources */,
+				DF9A8F3319DBD44500617365 /* UserCell.swift in Sources */,
 				DFC3AB7F19D68DDF003D75C1 /* Twitter.xcdatamodeld in Sources */,
+				DFC3ABD319D69358003D75C1 /* OAuthSwiftHTTPRequest.swift in Sources */,
+				DF8ADDEE19DA92E800E2CE54 /* TweetCell.swift in Sources */,
+				DF27552219D73D7000437B56 /* RequestHandler.swift in Sources */,
+				DF9A8F3119DBC9DA00617365 /* UserListViewController.swift in Sources */,
+				DF5843D819D6B1650030BD8A /* ClientGenerator.swift in Sources */,
+				DFC3ABCC19D69358003D75C1 /* NSURL+OAuthSwift.swift in Sources */,
+				DF8ADDE819DA76F000E2CE54 /* Tweet.swift in Sources */,
+				DFC3ABD019D69358003D75C1 /* OAuth2Swift.swift in Sources */,
+				DF7EB12D19DA9FDB004DE9FB /* TweetsTableViewController.swift in Sources */,
+				DF7EB12B19DA99FF004DE9FB /* FlexibleLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +501,7 @@
 				INFOPLIST_FILE = Twitter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Twitter/OAuth/OAuthSwift-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -355,6 +512,7 @@
 				INFOPLIST_FILE = Twitter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Twitter/OAuth/OAuthSwift-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -411,6 +569,7 @@
 				DFC3AB9A19D68DDF003D75C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DFC3AB9B19D68DDF003D75C1 /* Build configuration list for PBXNativeTarget "TwitterTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +578,7 @@
 				DFC3AB9D19D68DDF003D75C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
