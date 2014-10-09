@@ -23,15 +23,15 @@ class User: NSManagedObject {
     @NSManaged var avatarData: NSData?
     @NSManaged var nextFollowersCursor: NSNumber?
     
-    var visibleTweets: NSMutableOrderedSet {
+    var visibleTweets: NSMutableSet {
         get {
-            return self.mutableOrderedSetValueForKey("visibleTweets")
+            return self.mutableSetValueForKey("visibleTweets")
         }
     }
     
-    var authoredTweets: NSMutableOrderedSet {
+    var authoredTweets: NSMutableSet {
         get {
-            return self.mutableOrderedSetValueForKey("authoredTweets")
+            return self.mutableSetValueForKey("authoredTweets")
         }
     }
 

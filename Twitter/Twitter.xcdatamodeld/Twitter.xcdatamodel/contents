@@ -25,14 +25,14 @@
         <attribute name="nextFollowersCursor" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="screenName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userDescription" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="authoredTweets" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Tweet" inverseName="creator" inverseEntity="Tweet" syncable="YES"/>
+        <relationship name="authoredTweets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tweet" inverseName="creator" inverseEntity="Tweet" syncable="YES"/>
         <relationship name="followed" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="followers" inverseEntity="User" syncable="YES"/>
         <relationship name="followers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="followed" inverseEntity="User" syncable="YES"/>
-        <relationship name="visibleTweets" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Tweet" inverseName="visibleTo" inverseEntity="Tweet" syncable="YES"/>
+        <relationship name="visibleTweets" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Tweet" inverseName="visibleTo" inverseEntity="Tweet" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Media" positionX="-342" positionY="-153" width="128" height="103"/>
         <element name="Tweet" positionX="-27" positionY="81" width="128" height="133"/>
         <element name="User" positionX="-549" positionY="-306" width="128" height="253"/>
-        <element name="Media" positionX="-342" positionY="-153" width="128" height="103"/>
     </elements>
 </model>
