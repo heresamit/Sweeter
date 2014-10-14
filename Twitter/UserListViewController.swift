@@ -12,6 +12,7 @@ import CoreData
 class UserListViewController: NFRCTableViewController {
     
     var user: User!
+    let EstimatedCellHeight: CGFloat = 75
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("userCell", forIndexPath:indexPath) as UserCell
@@ -26,7 +27,7 @@ class UserListViewController: NFRCTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.estimatedRowHeight = 75
+        tableView.estimatedRowHeight = EstimatedCellHeight
         tableView.rowHeight = UITableViewAutomaticDimension
     }
     

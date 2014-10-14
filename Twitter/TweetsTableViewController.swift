@@ -13,10 +13,11 @@ class TweetsTableViewController: NFRCTableViewController {
     
     var user: User!
     var displayingMainUser: Bool = false
+    let EstimatedCellHeight: CGFloat = 70
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.estimatedRowHeight = 70
+        tableView.estimatedRowHeight = EstimatedCellHeight
         tableView.rowHeight = UITableViewAutomaticDimension
     }
     
