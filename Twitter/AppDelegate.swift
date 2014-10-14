@@ -11,17 +11,20 @@ import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    let mainStoryboardName = "Main"
+    let authenticationViewControllerID = "AuthenticateVC"
+    let userProfileViewControllerID = "UserProfileVC"
 
     var window: UIWindow!
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         var initialViewController: UIViewController
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: mainStoryboardName, bundle: nil)
         
         if !isAuthenticated() {
-            initialViewController = storyboard.instantiateViewControllerWithIdentifier("AuthenticateVC") as AuthenticationViewController
+            initialViewController = storyboard.instantiateViewControllerWithIdentifier(authenticationViewControllerID) as AuthenticationViewController
         } else {
-            let userProfileViewController = storyboard.instantiateViewControllerWithIdentifier("UserProfileVC") as UserProfileViewController
+            let userProfileViewController = storyboard.instantiateViewControllerWithIdentifier(userProfileViewControllerID) as UserProfileViewController
             userProfileViewController.displayingMainUser = true
             userProfileViewController.userID = getMainUserId()
             initialViewController = userProfileViewController
