@@ -42,5 +42,6 @@ class Tweet: NSManagedObject {
         }
         return nil
     }
+    
 }
 

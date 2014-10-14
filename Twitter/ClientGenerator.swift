@@ -61,4 +61,5 @@ class ClientGenerator {
             delegate.clientCreated(OAuthSwiftClient(credential: credentials))
         }
     }
+    
 }

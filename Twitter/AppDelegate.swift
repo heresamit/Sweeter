@@ -135,5 +135,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func isAuthenticated() -> Bool {
         return NSUserDefaults.standardUserDefaults().boolForKey("isAuthenticated")
     }
+    
 }
 

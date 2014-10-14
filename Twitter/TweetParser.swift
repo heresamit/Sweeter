@@ -9,6 +9,7 @@
 import Foundation
 
 class TweetParser {
+    
     class func parseToTweet(tweetJson: NSDictionary) -> Tweet {
         let id = tweetJson["id"] as NSNumber
         if let tweet = Tweet.tweetForID(id) {

@@ -9,7 +9,9 @@
 import UIKit
 
 class UserCell: UITableViewCell {
+    
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var screenNameLabel: UILabel!
+    
 }

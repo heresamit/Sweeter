@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 
 class UserListViewController: NFRCTableViewController {
+    
     var user: User!
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -48,4 +49,5 @@ class UserListViewController: NFRCTableViewController {
             RequestHandler.sharedInstance.fetchFollowersForUser(user, onUserLoad: { _ in })
         }
     }
+    
 }

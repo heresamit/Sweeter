@@ -37,5 +37,6 @@ class AuthenticationViewController: UIViewController, RequestHandlerUser {
     override func viewWillDisappear(animated: Bool) {
         NSNotificationCenter.defaultCenter().removeObserver(self.requestHandlerReadyNotificationObserver!)
     }
+    
 }
 

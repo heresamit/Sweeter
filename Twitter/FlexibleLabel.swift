@@ -9,6 +9,7 @@
 import UIKit
 
 class FlexibleLabel: UILabel {
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         if numberOfLines == 0 && preferredMaxLayoutWidth != frame.size.width {
@@ -24,4 +25,5 @@ class FlexibleLabel: UILabel {
         }
         return size;
     }
+    
 }

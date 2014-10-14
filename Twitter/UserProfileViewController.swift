@@ -138,5 +138,6 @@ class UserProfileViewController: UIViewController, RequestHandlerUser {
             NSNotificationCenter.defaultCenter().removeObserver(obs)
         }
     }
+    
 }
 

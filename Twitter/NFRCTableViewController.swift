@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 
 class NFRCTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+    
     var fetchedResultController: NSFetchedResultsController!
     
     override func viewDidLoad() {

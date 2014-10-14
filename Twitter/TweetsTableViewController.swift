@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 
 class TweetsTableViewController: NFRCTableViewController {
+    
     var user: User!
     var displayingMainUser: Bool = false
     
