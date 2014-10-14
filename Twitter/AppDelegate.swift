@@ -27,8 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         let navigationController = UINavigationController(rootViewController: initialViewController)
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
         
@@ -128,7 +128,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return true
     }
-
-
+    
+    // MARK: - Helpers
+    
+    func isAuthenticated() -> Bool {
+        return NSUserDefaults.standardUserDefaults().boolForKey("isAuthenticated")
+    }
 }
 

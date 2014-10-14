@@ -24,10 +24,6 @@ protocol RequestHandlerUser {
     func requestHandlerIsReady()
 }
 
-func isAuthenticated() -> Bool {
-    return NSUserDefaults.standardUserDefaults().boolForKey("isAuthenticated")
-}
-
 func getMainUserId() -> (NSNumber) {
     return NSUserDefaults.standardUserDefaults().objectForKey("mainUserId") as NSNumber
 }
