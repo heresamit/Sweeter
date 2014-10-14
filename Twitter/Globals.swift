@@ -12,7 +12,6 @@ import CoreData
 let RequestHandlerIsReadyNotification = "RequestHandlerIsReadyNotification"
 let UserImageUpdatedNotification = "UserImageUpdatedNotification"
 
-let storyboard = UIStoryboard(name: "Main", bundle: nil)
 let delegate = UIApplication.sharedApplication().delegate as AppDelegate
 
 protocol ClientGeneratorDelegate {

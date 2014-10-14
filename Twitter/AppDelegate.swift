@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         var initialViewController: UIViewController
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         if !isAuthenticated() {
             initialViewController = storyboard.instantiateViewControllerWithIdentifier("AuthenticateVC") as ViewController
