@@ -21,8 +21,8 @@ class RequestHandler: ClientGeneratorDelegate  {
     }
     
     init() {
-        let cg = ClientGenerator(delegate: self)
-        cg.generateClient()
+        let clientGenerator = ClientGenerator(delegate: self)
+        clientGenerator.generateClient()
     }
     
     func clientCreated(client: OAuthSwiftClient) {

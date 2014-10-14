@@ -43,23 +43,23 @@ func saveMainUserToUserDefaults(id: NSNumber, screenName: String) {
 
 extension NSDate {
     func humanReadableTimeSinceNowString() -> String {
-        var ti = Int64(self.timeIntervalSinceNow)
-        if ti < 0 {
-            ti = ti * -1
+        var timeInterval = Int64(self.timeIntervalSinceNow)
+        if timeInterval < 0 {
+            timeInterval = timeInterval * -1
         }
         
-        let minutes = (ti / 60) % 60
-        let hours = (ti / 3600) % 24
-        let days = (ti / 3600) / 24
+        let minutes = (timeInterval / 60) % 60
+        let hours = (timeInterval / 3600) % 24
+        let days = (timeInterval / 3600) / 24
         
-        var str = "\(minutes)m"
+        var timeIntervalString = "\(minutes)m"
         if hours > 0 {
-            str = "\(hours)h " + str
+            timeIntervalString = "\(hours)h " + timeIntervalString
         }
         if days > 0 {
-            str = "\(days)d " + str
+            timeIntervalString = "\(days)d " + timeIntervalString
         }
         
-        return str
+        return timeIntervalString
     }
 }
