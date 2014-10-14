@@ -15,20 +15,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        var vc: UIViewController
+        var initialViewController: UIViewController
+        
         if !isAuthenticated() {
-            vc = storyboard.instantiateViewControllerWithIdentifier("AuthenticateVC") as ViewController
+            initialViewController = storyboard.instantiateViewControllerWithIdentifier("AuthenticateVC") as ViewController
         } else {
-            let upvc = storyboard.instantiateViewControllerWithIdentifier("UserProfileVC") as UserProfileViewController
-            upvc.displayingMainUser = true
-            upvc.userID = getMainUserId()
-            vc = upvc
+            let userProfileViewController = storyboard.instantiateViewControllerWithIdentifier("UserProfileVC") as UserProfileViewController
+            userProfileViewController.displayingMainUser = true
+            userProfileViewController.userID = getMainUserId()
+            initialViewController = userProfileViewController
         }
         
-        let nvc = UINavigationController(rootViewController: vc)
-        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        let navigationController = UINavigationController(rootViewController: initialViewController)
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
-        self.window?.rootViewController = nvc
+        self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
         
         return true
