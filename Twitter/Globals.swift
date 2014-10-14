@@ -11,6 +11,8 @@ import CoreData
 
 let RequestHandlerIsReadyNotification = "RequestHandlerIsReadyNotification"
 let UserImageUpdatedNotification = "UserImageUpdatedNotification"
+let mainUserIDNSUserDefaultsKey = "mainUserId"
+let mainUserScreenNameNSUserDefaultsKey = "mainUserScreenName"
 
 let delegate = UIApplication.sharedApplication().delegate as AppDelegate
 
@@ -24,12 +26,12 @@ protocol RequestHandlerUser {
 }
 
 func getMainUserId() -> (NSNumber) {
-    return NSUserDefaults.standardUserDefaults().objectForKey("mainUserId") as NSNumber
+    return NSUserDefaults.standardUserDefaults().objectForKey(mainUserIDNSUserDefaultsKey) as NSNumber
 }
 
 func saveMainUserToUserDefaults(id: NSNumber, screenName: String) {
-    NSUserDefaults.standardUserDefaults().setObject(id, forKey: "mainUserId")
-    NSUserDefaults.standardUserDefaults().setObject(screenName, forKey: "mainUserScreenName")
+    NSUserDefaults.standardUserDefaults().setObject(id, forKey: mainUserIDNSUserDefaultsKey)
+    NSUserDefaults.standardUserDefaults().setObject(screenName, forKey: mainUserScreenNameNSUserDefaultsKey)
     NSUserDefaults.standardUserDefaults().synchronize()
 }
 
