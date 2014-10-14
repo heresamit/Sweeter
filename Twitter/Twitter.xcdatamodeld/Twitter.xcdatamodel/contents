@@ -7,8 +7,8 @@
         <relationship name="containedIn" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tweet" inverseName="containedMedia" inverseEntity="Tweet" syncable="YES"/>
     </entity>
     <entity name="Tweet" representedClassName="Tweet" syncable="YES">
-        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="createdAt" attributeType="Date" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 64" defaultValueString="0.0" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="containedMedia" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Media" inverseName="containedIn" inverseEntity="Media" syncable="YES"/>
         <relationship name="creator" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="authoredTweets" inverseEntity="User" syncable="YES"/>
@@ -21,9 +21,9 @@
         <attribute name="imageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="nextFollowersCursor" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="screenName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="screenName" attributeType="String" syncable="YES"/>
         <attribute name="userDescription" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="authoredTweets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tweet" inverseName="creator" inverseEntity="Tweet" syncable="YES"/>
         <relationship name="followed" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="followers" inverseEntity="User" syncable="YES"/>

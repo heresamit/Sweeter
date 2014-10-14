@@ -13,9 +13,9 @@ import CoreData
 class User: NSManagedObject {
     
     @NSManaged var screenName: String
-    @NSManaged var followersCount: NSNumber?
-    @NSManaged var id: NSNumber!
-    @NSManaged var name: String?
+    @NSManaged var id: NSNumber
+    @NSManaged var name: String
+    @NSManaged var followersCount: NSNumber
     @NSManaged var location: String?
     @NSManaged var userDescription: String?
     @NSManaged var imageURL: String?
@@ -77,11 +77,17 @@ class User: NSManagedObject {
             user in
             user.id = userDict["id"]! as NSNumber
             user.screenName = userDict["screen_name"] as String
-            user.name = userDict["name"] as? String
+            user.name = userDict["name"] as String
             user.location = userDict["location"] as? String
             user.userDescription = userDict["description"] as? String
             user.imageURL = userDict["profile_image_url"] as? String
-            user.followersCount = userDict["followers_count"] as? NSNumber
+            
+            if let count = userDict["followers_count"] as? NSNumber {
+                user.followersCount = count
+            } else {
+                user.followersCount = 0
+            }
+            
             user.updateAvatar()
             user.updateImage()
         }

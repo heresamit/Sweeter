@@ -21,7 +21,7 @@ class TweetViewController: UIViewController {
     
     @IBAction func handleButtonPressed(sender: AnyObject) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("UserProfileVC") as UserProfileViewController
-        vc.user = tweet.creator!
+        vc.user = tweet.creator
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -31,11 +31,11 @@ class TweetViewController: UIViewController {
     }
     
     func updateView() {
-        nameLabel.text = tweet.creator!.name
-        handleButton.setTitle("@" + tweet.creator!.screenName, forState: .Normal)
-        avatarView.image = UIImage(data: tweet.creator!.avatarData!)
+        nameLabel.text = tweet.creator.name
+        handleButton.setTitle("@" + tweet.creator.screenName, forState: .Normal)
+        avatarView.image = UIImage(data: tweet.creator.avatarData!)
         textLabel.text = tweet.text
-        timeLabel.text = tweet.createdAt!.humanReadableTimeSinceNowString() + " ago"
+        timeLabel.text = tweet.createdAt.humanReadableTimeSinceNowString() + " ago"
         if let media = tweet.containedMedia.anyObject() as? Media {
             media.updateData {
                 self.imageView.image = UIImage(data: media.data)

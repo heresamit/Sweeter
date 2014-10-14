@@ -12,9 +12,9 @@ import CoreData
 @objc(Tweet)
 class Tweet: NSManagedObject {
     
-    @NSManaged var creator: User?
+    @NSManaged var creator: User
     @NSManaged var visibleTo: User?
-    @NSManaged var createdAt: NSDate?
+    @NSManaged var createdAt: NSDate
     @NSManaged var text: String?
     @NSManaged var id: NSNumber
     

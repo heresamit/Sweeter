@@ -23,12 +23,12 @@ class TweetsTableViewController: NFRCTableViewController {
         var cell = tableView.dequeueReusableCellWithIdentifier("cell") as TweetCell
         var tweet = fetchedResultController.objectAtIndexPath(indexPath) as Tweet
         
-        if let data = tweet.creator!.avatarData {
+        if let data = tweet.creator.avatarData {
             cell.imgView.image = UIImage(data: data)
         }
         
-        cell.screenNameLabel.text = "@" + tweet.creator!.screenName
-        cell.nameLabel.text = tweet.creator!.name
+        cell.screenNameLabel.text = "@" + tweet.creator.screenName
+        cell.nameLabel.text = tweet.creator.name
         cell.tweetTextLabel.text = tweet.text
         
         return cell

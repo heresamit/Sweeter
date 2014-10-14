@@ -43,10 +43,10 @@ class TweetParser {
         }
     }
     
-    private class func dateFromString(dateStr: String) -> NSDate? {
+    private class func dateFromString(dateStr: String) -> NSDate {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "EEE MMM dd HH:mm:ss Z yyyy"
-        return dateFormatter.dateFromString(dateStr)
+        return dateFormatter.dateFromString(dateStr)!
     }
     
     private class func setCreatorForTweet(tweet: Tweet, creator: User) {

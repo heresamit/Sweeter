@@ -113,7 +113,7 @@ class UserProfileViewController: UIViewController, RequestHandlerUser {
         screenNameLabel.text = "@" + user!.screenName
         locationLabel.text = user!.location
         nameLabel.text = user!.name
-        followersCountLabel.text = "\(user!.followersCount!)"
+        followersCountLabel.text = "\(user!.followersCount)"
         descriptionLabel.text = user!.userDescription!
         displayImage()
     }
