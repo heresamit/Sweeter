@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, RequestHandlerUser {
+class AuthenticationViewController: UIViewController, RequestHandlerUser {
     
     var requestHandlerReadyNotificationObserver: AnyObject?
 
@@ -32,16 +32,6 @@ class ViewController: UIViewController, RequestHandlerUser {
         vc.displayingMainUser = true
         vc.userID = getMainUserId()
         self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewWillDisappear(animated: Bool) {

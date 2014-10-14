@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         if !isAuthenticated() {
-            initialViewController = storyboard.instantiateViewControllerWithIdentifier("AuthenticateVC") as ViewController
+            initialViewController = storyboard.instantiateViewControllerWithIdentifier("AuthenticateVC") as AuthenticationViewController
         } else {
             let userProfileViewController = storyboard.instantiateViewControllerWithIdentifier("UserProfileVC") as UserProfileViewController
             userProfileViewController.displayingMainUser = true
