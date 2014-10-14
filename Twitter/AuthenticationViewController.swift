@@ -10,7 +10,7 @@ import UIKit
 
 class AuthenticationViewController: UIViewController, RequestHandlerUser {
     
-    var requestHandlerReadyNotificationObserver: AnyObject?
+    var requestHandlerReadyNotificationObserver: AnyObject!
 
     @IBAction func authenticatePressed(sender: UIButton) {
         if RequestHandler.sharedInstance.isReady {
@@ -28,10 +28,10 @@ class AuthenticationViewController: UIViewController, RequestHandlerUser {
     
     func requestHandlerIsReady() {
         let storyboard = UIStoryboard(name: MainStoryboardName, bundle: nil)
-        var  vc = storyboard.instantiateViewControllerWithIdentifier(UserProfileViewControllerID) as UserProfileViewController
-        vc.displayingMainUser = true
-        vc.userID = getMainUserId()
-        self.navigationController?.pushViewController(vc, animated: true)
+        var mainUserProfileViewController = storyboard.instantiateViewControllerWithIdentifier(UserProfileViewControllerID) as UserProfileViewController
+        mainUserProfileViewController.displayingMainUser = true
+        mainUserProfileViewController.userID = getMainUserId()
+        self.navigationController?.pushViewController(mainUserProfileViewController, animated: true)
     }
     
     override func viewWillDisappear(animated: Bool) {

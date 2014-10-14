@@ -20,12 +20,12 @@ class UserProfileViewController: UIViewController, RequestHandlerUser {
     @IBOutlet weak var followersCountLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
-    var user: User?
-    var requestHandlerReadyNotificationObserver: AnyObject?
-    var userImageUpdatedNotificationObserver: AnyObject?
+    var user: User!
+    var userID: NSNumber!
+    var requestHandlerReadyNotificationObserver: AnyObject!
+    var userImageUpdatedNotificationObserver: AnyObject!
     var canShowTweetsAndFollowers: Bool = false
     var displayingMainUser: Bool = false
-    var userID: NSNumber!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,8 +57,8 @@ class UserProfileViewController: UIViewController, RequestHandlerUser {
     func requestHandlerIsReady() {
         if user == nil {
             if let tempUser = User.userForID(userID) {
-                user = tempUser
-                displayImage()
+                self.user = tempUser
+                self.displayImage()
                 self.updateView()
             } else {
                 downloadUser()
@@ -99,9 +99,9 @@ class UserProfileViewController: UIViewController, RequestHandlerUser {
         if readyToShowTweetsAndFollowers() {
             RequestHandler.sharedInstance.fetchFollowersForUser(user!, onUserLoad: { _ in })
             let storyboard = UIStoryboard(name: MainStoryboardName, bundle: nil)
-            var  vc = storyboard.instantiateViewControllerWithIdentifier(UserListViewControllerID) as UserListViewController
-            vc.user = user!
-            self.navigationController?.pushViewController(vc, animated: true)
+            var followersViewController = storyboard.instantiateViewControllerWithIdentifier(UserListViewControllerID) as UserListViewController
+            followersViewController.user = user
+            self.navigationController?.pushViewController(followersViewController, animated: true)
         }
     }
     
@@ -128,10 +128,6 @@ class UserProfileViewController: UIViewController, RequestHandlerUser {
     
     override func viewDidLayoutSubviews() {
         imgView.layer.cornerRadius = imgView.frame.size.height / 2;
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
     override func viewWillDisappear(animated: Bool) {

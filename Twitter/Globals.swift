@@ -27,7 +27,7 @@ protocol ClientGeneratorDelegate {
 }
 
 protocol RequestHandlerUser {
-    var requestHandlerReadyNotificationObserver: AnyObject? { get set }
+    var requestHandlerReadyNotificationObserver: AnyObject! { get set }
     func requestHandlerIsReady()
 }
 

@@ -18,7 +18,7 @@ class UserListViewController: NFRCTableViewController {
         cell.nameLabel?.text = userToDisplay.name
         cell.screenNameLabel?.text = "@" + userToDisplay.screenName
         if let data = userToDisplay.avatarData {
-            cell.imageView?.image = UIImage(data: data)
+            cell.imageView!.image = UIImage(data: data)
         }
         return cell
     }
@@ -30,9 +30,9 @@ class UserListViewController: NFRCTableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let vc = UIStoryboard(name: MainStoryboardName, bundle: nil).instantiateViewControllerWithIdentifier(UserProfileViewControllerID) as UserProfileViewController
-        vc.user = fetchedResultController.objectAtIndexPath(indexPath) as? User
-        navigationController?.pushViewController(vc, animated: true)
+        let userProfileViewController = UIStoryboard(name: MainStoryboardName, bundle: nil).instantiateViewControllerWithIdentifier(UserProfileViewControllerID) as UserProfileViewController
+        userProfileViewController.user = fetchedResultController.objectAtIndexPath(indexPath) as? User
+        navigationController?.pushViewController(userProfileViewController, animated: true)
     }
     
     override func taskFetchRequest() -> NSFetchRequest {

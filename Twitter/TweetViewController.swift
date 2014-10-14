@@ -20,9 +20,9 @@ class TweetViewController: UIViewController {
     @IBOutlet weak var textLabel: UILabel!
     
     @IBAction func handleButtonPressed(sender: AnyObject) {
-        let vc = UIStoryboard(name: MainStoryboardName, bundle: nil).instantiateViewControllerWithIdentifier(UserProfileViewControllerID) as UserProfileViewController
-        vc.user = tweet.creator
-        navigationController?.pushViewController(vc, animated: true)
+        let creatorProfileViewController = UIStoryboard(name: MainStoryboardName, bundle: nil).instantiateViewControllerWithIdentifier(UserProfileViewControllerID) as UserProfileViewController
+        creatorProfileViewController.user = tweet.creator
+        navigationController?.pushViewController(creatorProfileViewController, animated: true)
     }
     
     override func viewWillAppear(animated: Bool) {
