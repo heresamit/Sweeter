@@ -47,7 +47,7 @@ class TweetsTableViewController: NFRCTableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TweetViewController") as TweetViewController
+        let vc = UIStoryboard(name: MainStoryboardName, bundle: nil).instantiateViewControllerWithIdentifier(TweetViewControllerID) as TweetViewController
         vc.tweet = fetchedResultController.objectAtIndexPath(indexPath) as? Tweet
         navigationController?.pushViewController(vc, animated: true)
     }

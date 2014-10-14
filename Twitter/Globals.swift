@@ -11,8 +11,14 @@ import CoreData
 
 let RequestHandlerIsReadyNotification = "RequestHandlerIsReadyNotification"
 let UserImageUpdatedNotification = "UserImageUpdatedNotification"
-let mainUserIDNSUserDefaultsKey = "mainUserId"
-let mainUserScreenNameNSUserDefaultsKey = "mainUserScreenName"
+let MainUserIDNSUserDefaultsKey = "mainUserId"
+let MainUserScreenNameNSUserDefaultsKey = "mainUserScreenName"
+let MainStoryboardName = "Main"
+let AuthenticationViewControllerID = "AuthenticateVC"
+let UserProfileViewControllerID = "UserProfileVC"
+let TweetViewControllerID = "TweetViewController"
+let TweetsTableViewControllerID = "TweetsTableViewController"
+let UserListViewControllerID = "UserListViewController"
 
 let delegate = UIApplication.sharedApplication().delegate as AppDelegate
 
@@ -26,12 +32,12 @@ protocol RequestHandlerUser {
 }
 
 func getMainUserId() -> (NSNumber) {
-    return NSUserDefaults.standardUserDefaults().objectForKey(mainUserIDNSUserDefaultsKey) as NSNumber
+    return NSUserDefaults.standardUserDefaults().objectForKey(MainUserIDNSUserDefaultsKey) as NSNumber
 }
 
 func saveMainUserToUserDefaults(id: NSNumber, screenName: String) {
-    NSUserDefaults.standardUserDefaults().setObject(id, forKey: mainUserIDNSUserDefaultsKey)
-    NSUserDefaults.standardUserDefaults().setObject(screenName, forKey: mainUserScreenNameNSUserDefaultsKey)
+    NSUserDefaults.standardUserDefaults().setObject(id, forKey: MainUserIDNSUserDefaultsKey)
+    NSUserDefaults.standardUserDefaults().setObject(screenName, forKey: MainUserScreenNameNSUserDefaultsKey)
     NSUserDefaults.standardUserDefaults().synchronize()
 }
 

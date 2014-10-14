@@ -87,8 +87,8 @@ class UserProfileViewController: UIViewController, RequestHandlerUser {
                 RequestHandler.sharedInstance.fetchAuthoredTweetsForUser(user!, maxID: nil, { _ in })
             }
             
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            var  vc = storyboard.instantiateViewControllerWithIdentifier("TweetsTableViewController") as TweetsTableViewController
+            let storyboard = UIStoryboard(name: MainStoryboardName, bundle: nil)
+            var  vc = storyboard.instantiateViewControllerWithIdentifier(TweetsTableViewControllerID) as TweetsTableViewController
             vc.user = user!
             vc.displayingMainUser = displayingMainUser
             self.navigationController?.pushViewController(vc, animated: true)
@@ -98,8 +98,8 @@ class UserProfileViewController: UIViewController, RequestHandlerUser {
     @IBAction func followersButtonPressed(sender: UIButton) {
         if readyToShowTweetsAndFollowers() {
             RequestHandler.sharedInstance.fetchFollowersForUser(user!, onUserLoad: { _ in })
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            var  vc = storyboard.instantiateViewControllerWithIdentifier("UserListViewController") as UserListViewController
+            let storyboard = UIStoryboard(name: MainStoryboardName, bundle: nil)
+            var  vc = storyboard.instantiateViewControllerWithIdentifier(UserListViewControllerID) as UserListViewController
             vc.user = user!
             self.navigationController?.pushViewController(vc, animated: true)
         }

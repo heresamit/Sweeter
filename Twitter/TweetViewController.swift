@@ -20,7 +20,7 @@ class TweetViewController: UIViewController {
     @IBOutlet weak var textLabel: UILabel!
     
     @IBAction func handleButtonPressed(sender: AnyObject) {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("UserProfileVC") as UserProfileViewController
+        let vc = UIStoryboard(name: MainStoryboardName, bundle: nil).instantiateViewControllerWithIdentifier(UserProfileViewControllerID) as UserProfileViewController
         vc.user = tweet.creator
         navigationController?.pushViewController(vc, animated: true)
     }

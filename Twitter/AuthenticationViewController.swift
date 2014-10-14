@@ -27,8 +27,8 @@ class AuthenticationViewController: UIViewController, RequestHandlerUser {
     }
     
     func requestHandlerIsReady() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        var  vc = storyboard.instantiateViewControllerWithIdentifier("UserProfileVC") as UserProfileViewController
+        let storyboard = UIStoryboard(name: MainStoryboardName, bundle: nil)
+        var  vc = storyboard.instantiateViewControllerWithIdentifier(UserProfileViewControllerID) as UserProfileViewController
         vc.displayingMainUser = true
         vc.userID = getMainUserId()
         self.navigationController?.pushViewController(vc, animated: true)

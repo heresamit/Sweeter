@@ -30,7 +30,7 @@ class UserListViewController: NFRCTableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("UserProfileVC") as UserProfileViewController
+        let vc = UIStoryboard(name: MainStoryboardName, bundle: nil).instantiateViewControllerWithIdentifier(UserProfileViewControllerID) as UserProfileViewController
         vc.user = fetchedResultController.objectAtIndexPath(indexPath) as? User
         navigationController?.pushViewController(vc, animated: true)
     }
