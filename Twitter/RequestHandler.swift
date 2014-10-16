@@ -13,11 +13,11 @@ private let _SingletonASharedInstance = RequestHandler()
 
 class RequestHandler: ClientGeneratorDelegate  {
     
-    var client: OAuthSwiftClient?
+    var client: OAuthSwiftClient!
     var isReady: Bool = false
     
     class var sharedInstance : RequestHandler {
-    return _SingletonASharedInstance
+        return _SingletonASharedInstance
     }
     
     init() {
@@ -37,7 +37,7 @@ class RequestHandler: ClientGeneratorDelegate  {
     
     func getUserInfo(id: NSNumber, onCompletion:(userDict: NSDictionary?) -> ()) {
         if isReady {
-            client!.get("https://api.twitter.com/1.1/users/show.json",
+            client.get("https://api.twitter.com/1.1/users/show.json",
                 parameters: ["user_id" : id],
                 success: {
                     data, response in
@@ -58,7 +58,7 @@ class RequestHandler: ClientGeneratorDelegate  {
     }
     
     func getTimeline(url: String, params: Dictionary<String, AnyObject>, onCompletion: (tweets: NSArray?)->()) {
-        client!.get(url,
+        client.get(url,
             parameters: params,
             success: {
                 data, response in
@@ -113,7 +113,7 @@ class RequestHandler: ClientGeneratorDelegate  {
     
     func fetchFollowersForUser(requestingUser: User, onUserLoad:(user: User) -> ()) {
         if isReady && requestingUser.nextFollowersCursor!.longLongValue != 0 {
-            client!.get("https://api.twitter.com/1.1/followers/list.json",
+            client.get("https://api.twitter.com/1.1/followers/list.json",
                 parameters: [
                     "user_id" : requestingUser.id,
                     "skip_status" : 1,
